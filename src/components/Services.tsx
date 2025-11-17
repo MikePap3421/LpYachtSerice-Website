@@ -10,44 +10,77 @@ import {
   Support 
 } from '@mui/icons-material';
 import '/src/components/Home.css';
+import { useTranslation } from 'react-i18next';
 
 function Services() {
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: <Build sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Μηχανικές Εργασίες",
-      description: "Εξειδικευμένες υπηρεσίες επισκευής και συντήρησης μηχανών σκαφών. Πλήρης συντήρηση, επιδιόρθωση βλαβών και αναβάθμιση συστημάτων με γνώση και εμπειρία σε όλους τους τύπους κινητήρων.",
-      features: ["Συντήρηση κινητήρων", "Επιδιόρθωση βλαβών", "Αναβαθμίσεις", "Διαγνωστικά"]
+      title: t('services_mechanical_title'),
+      description: t('services_mechanical_description'),
+      features: [
+        t('services_mechanical_feature1'),
+        t('services_mechanical_feature2'),
+        t('services_mechanical_feature3'),
+        t('services_mechanical_feature4')
+      ]
     },
     {
       icon: <Engineering sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Μετατροπές & Αναβαθμίσεις",
-      description: "Επαγγελματικές υπηρεσίες μετατροπών και αναβαθμίσεων σκαφών. Αναλαμβάνουμε τροποποιήσεις για βελτίωση απόδοσης, αλλαγές διαμόρφωσης και προσαρμογές σύμφωνα με τις ανάγκες σας.",
-      features: ["Ανακατασκευές", "Τροποποιήσεις", "Βελτιστοποιήσεις", "Προσαρμογές"]
+      title: t('services_conversions_title'),
+      description: t('services_conversions_description'),
+      features: [
+        t('services_conversions_feature1'),
+        t('services_conversions_feature2'),
+        t('services_conversions_feature3'),
+        t('services_conversions_feature4')
+      ]
     },
     {
       icon: <ElectricalServices sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Ηλεκτρικά Συστήματα",
-      description: "Επαγγελματικός έλεγχος, αναβάθμιση και επιδιόρθωση ηλεκτρικών συστημάτων για ασφαλή και αξιόπιστη λειτουργία του σκάφους σας.",
-      features: ["Εγκαταστάσεις", "Επιδιορθώσεις", "Συστήματα ασφαλείας", "Αυτοματισμοί"]
+      title: t('services_electrical_title'),
+      description: t('services_electrical_description'),
+      features: [
+        t('services_electrical_feature1'),
+        t('services_electrical_feature2'),
+        t('services_electrical_feature3'),
+        t('services_electrical_feature4')
+      ]
     },
     {
       icon: <Handyman sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Συντήρηση Σκαφών",
-      description: "Ολοκληρωμένα προγράμματα συντήρησης για όλα τα είδη σκαφών. Προληπτική συντήρηση, ελέγχους ασφαλείας και προγραμματισμένες επεμβάσεις.",
-      features: ["Προγραμματισμένη συντήρηση", "Έλεγχοι ασφαλείας", "Αντικαταστάσεις", "Επιθεωρήσεις"]
+      title: t('services_maintenance_title'),
+      description: t('services_maintenance_description'),
+      features: [
+        t('services_maintenance_feature1'),
+        t('services_maintenance_feature2'),
+        t('services_maintenance_feature3'),
+        t('services_maintenance_feature4')
+      ]
     },
     {
       icon: <CleaningServices sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Καθαρισμός & Φροντίδα",
-      description: "Εξειδικευμένες υπηρεσίες καθαρισμού και φροντίδας σκαφών. Πλήρης καθαρισμός εσωτερικών και εξωτερικών χώρων, πολυλόγηση και προστατευτικές επεμβάσεις.",
-      features: ["Εξωτερικός καθαρισμός", "Εσωτερικός καθαρισμός", "Πολυλόγηση", "Προστασία"]
+      title: t('services_cleaning_title'),
+      description: t('services_cleaning_description'),
+      features: [
+        t('services_cleaning_feature1'),
+        t('services_cleaning_feature2'),
+        t('services_cleaning_feature3'),
+        t('services_cleaning_feature4')
+      ]
     },
     {
       icon: <Support sx={{ fontSize: 50, color: '#274688' }} />,
-      title: "Συμβουλευτικές Υπηρεσίες",
-      description: "Επαγγελματικές συμβουλές για τη συντήρηση, βελτιστοποίηση και φροντίδα του σκάφους σας. Τεχνικές γνώμες και λύσεις προσαρμοσμένες στις ανάγκες σας.",
-      features: ["Τεχνικές γνώμες", "Σχεδιασμός projects", "Υποστήριξη", "Συμβουλές"]
+      title: t('services_consulting_title'),
+      description: t('services_consulting_description'),
+      features: [
+        t('services_consulting_feature1'),
+        t('services_consulting_feature2'),
+        t('services_consulting_feature3'),
+        t('services_consulting_feature4')
+      ]
     }
   ];
 
@@ -72,7 +105,7 @@ function Services() {
               fontSize: { xs: '2.5rem', md: '3.5rem' }
             }}
           >
-            Υπηρεσίες
+            {t('services_hero_title')}
           </Typography>
           
           <Typography 
@@ -86,8 +119,7 @@ function Services() {
               lineHeight: 1.6
             }}
           >
-            Εξειδικευμένες λύσεις για κάθε ανάγκη του σκάφους σας. 
-            Ποιότητα, αξιοπιστία και επαγγελματισμός σε κάθε έργο.
+            {t('services_hero_subtitle')}
           </Typography>
         </Box>
       </section>
@@ -170,7 +202,7 @@ function Services() {
                         fontSize: '1.1rem'
                       }}
                     >
-                      Περιλαμβάνει:
+                      {t('services_includes')}
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {service.features.map((feature, featureIndex) => (
@@ -195,70 +227,7 @@ function Services() {
             ))}
           </div>
         </Box>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="services-cta" style={{ backgroundColor: '#f2f2f3ff' }}>
-        <Box sx={{ 
-          maxWidth: 800, 
-          margin: '4rem auto', 
-          padding: '4rem 2rem',
-          textAlign: 'center',
-          backgroundColor: '#274688',
-          borderRadius: 3,
-          color: 'white'
-        }}>
-          <Typography 
-            variant="h3" 
-            sx={{ 
-              fontWeight: 700,
-              marginBottom: '1.5rem',
-              fontSize: { xs: '2rem', md: '2.5rem' }
-            }}
-          >
-            Έτοιμοι να αναλάβουμε το επόμενο σας Project;
-          </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              marginBottom: '2.5rem',
-              opacity: 0.9,
-              fontSize: { xs: '1.1rem', md: '1.3rem' },
-              lineHeight: 1.6
-            }}
-          >
-            Επικοινωνήστε μαζί μας για δωρεάν τεχνική γνώμη και προσφορά
-          </Typography>
-
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1
-              }}
-            >
-              📞 +30 6945663120
-            </Typography>
-            
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1
-              }}
-            >
-              ✉️ lpyachtservice@gmail.com
-            </Typography>
-          </Box>
-        </Box>
-      </section>
-      
+      </section>      
       <Footer />
     </div>
   );

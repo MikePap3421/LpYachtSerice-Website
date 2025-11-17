@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
 import { BrowserRouter } from 'react-router-dom'
+import './i18n';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

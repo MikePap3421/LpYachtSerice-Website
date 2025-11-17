@@ -32,9 +32,7 @@ img {
   text-transform: none;
 }
 
-.navbar .MuiButton-root:hover {
-  color: #1B3266;
-}
+
 
 /* -------------------- VIDEO SECTION -------------------- */
 .home-container {
@@ -119,47 +117,56 @@ img {
   max-width: 1500px;
 }
 
-/* Info Card (Text) */
 .info-card {
   flex: 1.2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #274688 !important;
-  color: #ffffff;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  color: #274688 !important;
+  border-radius: 10px !important;
   padding: 2rem;
   box-shadow: 0 6px 20px rgba(39, 70, 136, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(39, 70, 136, 0.1); 
 }
 
 .info-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(39, 70, 136, 0.03), rgba(39, 70, 136, 0.01)); 
+  border-radius: 18px;
   pointer-events: none;
 }
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(39, 70, 136, 0.35);
+  box-shadow: 0 10px 25px rgba(39, 70, 136, 0.2);
 }
 
 .info-card .MuiTypography-h5 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #274688 !important; /* Navy blue */
   margin-bottom: 1rem;
 }
 
 .info-card .MuiTypography-body1 {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #1B263B !important; /* Dark navy for body text */
   line-height: 1.7;
+}
+
+/* CheckCircle icons - make them navy blue */
+.info-card .MuiSvgIcon-root {
+  color: #274688 !important;
+}
+
+.info-card .MuiTypography-body2 {
+  color: #1B263B !important; /* Dark navy for list items */
 }
 
 /* Image Card */
@@ -169,9 +176,11 @@ img {
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  border-radius: 16px;
+  border-radius: 10px !important;
   box-shadow: 0 6px 20px rgba(39, 70, 136, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(39, 70, 136, 0.1); /* Subtle border */
 }
 
 .info-card-img:hover {
@@ -181,15 +190,15 @@ img {
 
 .info-card-img img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 16px;
-  padding: 1.5rem;
+  height: 100%; 
+  object-fit: cover;
+  padding: 0;
   transition: transform 0.3s ease;
+  /* Remove the transform: 'translateX(50%)' - it was causing issues */
 }
 
 .info-card-img:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* ===== WHY CHOOSE US SECTION ===== */
@@ -222,15 +231,16 @@ img {
 
 .why-card {
   flex: 1 1 calc(33% - 2rem);
-  background-color: #274688;
-  color: #ffffff;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  color: #274688 !important; /* Navy blue text */
+  border-radius: 10px;
   padding: 2.5rem;
   box-shadow: 0 6px 20px rgba(39, 70, 136, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
   min-width: 300px;
   max-width: 400px;
+  border: 1px solid rgba(39, 70, 136, 0.1); 
 }
 
 .why-card:hover {
@@ -239,7 +249,7 @@ img {
 }
 
 .why-card h3 {
-  color: #ffffff;
+  color: #274688 !important; /* Navy blue */
   font-size: 1.6rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -247,7 +257,7 @@ img {
 
 .why-card p {
   font-size: 1.1rem;
-  color: #cedaee;
+  color: #1B263B !important; /* Dark navy for body text */
   opacity: 0.9;
   line-height: 1.7;
 }
@@ -290,7 +300,7 @@ img {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(39, 70, 136, 0.1) !important;
-  border-radius: 16px !important;
+  border-radius: 12px !important;
 }
 
 .service-card-enhanced::before {
@@ -348,7 +358,7 @@ img {
 
 .gallery-card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(39, 70, 136, 0.1);
   transition: all 0.3s ease;

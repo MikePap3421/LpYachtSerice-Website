@@ -4,8 +4,11 @@ import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import Footer from './Footer';
 import { ArrowForward, CheckCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation();
+  
   return (
     <div>
       <Navbar />
@@ -30,7 +33,7 @@ function Home() {
               color: 'white'
             }}
           >
-            Καλώς Ήρθατε στην <Box component="span" sx={{ color: '#ffffff' }}><b>LP Yacht Service</b></Box>
+            {t('home_hero_title')} <Box component="span" sx={{ color: '#ffffff' }}><b>{t('home_hero_company')}</b></Box>
           </Typography>
           <Typography 
             variant="h4" 
@@ -42,7 +45,7 @@ function Home() {
               color: 'white'
             }}
           >
-            Ποιότητα, εμπιστοσύνη και εμπειρία σε κάθε έργο
+            {t('home_hero_subtitle')}
           </Typography>
           
           <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -66,7 +69,7 @@ function Home() {
                 transition: 'all 0.3s ease'
               }}
             >
-              Δείτε τις Υπηρεσίες μας
+              {t('home_hero_services_button')}
             </Button>
           </Box>
         </div>
@@ -82,31 +85,28 @@ function Home() {
             fontWeight: 700
           }}
         >
-          Σχετικά με Εμάς
+          {t('home_about_title')}
         </Typography>
 
         <Box className="cards-section">
           <Card className="info-card">
             <CardContent>
               <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: 600, color: '#ffffff' }}>
-                Η Ιστορία μας
+                {t('home_about_our_story_title')}
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.9)', lineHeight: 1.7 }}>
-                Η LP Yacht Service είναι μια οικογενειακή επιχείρηση με βαθιές ρίζες στη ναυπηγική βιομηχανία. 
-                Με πάνω από 15 χρόνια εμπειρίας, έχουμε αναπτύξει ένα πάθος για την τέλεια εκτέλεση κάθε έργου 
-                και την απόλυτη ικανοποίηση των πελατών μας. Εξειδικευόμαστε σε ολοκληρωμένες λύσεις συντήρησης 
-                και επισκευής σκαφών, συνδυάζοντας παραδοσιακή τεχνογνωσία με σύγχρονες τεχνολογίες.
+                {t('home_about_our_story_description')}
               </Typography>
               
               <Box sx={{ marginTop: 2 }}>
                 {[
-                  "Εξειδικευμένο τεχνικό προσωπικό",
-                  "Ποιότητα υλικών και υπηρεσιών", 
-                  "Γρήγορη και αξιόπιστη εξυπηρέτηση",
-                  "Διαφανή τιμολόγηση και πολιτική"
+                  t('home_about_bullet1'),
+                  t('home_about_bullet2'),
+                  t('home_about_bullet3'),
+                  t('home_about_bullet4')
                 ].map((item, index) => (
                   <Box key={index} sx={{ display: 'flex', alignItems: 'center', marginBottom: 1 }}>
-                    <CheckCircle sx={{ color: '#ffffff', marginRight: 1, fontSize: '1.2rem' }} />
+                    <CheckCircle sx={{ color: '#ffffff', marginRight: 1, fontSize: '1.5rem' }} />
                     <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.9)' }}>
                       {item}
                     </Typography>
@@ -117,14 +117,22 @@ function Home() {
           </Card>
 
           <Card className="info-card-img">
-            <CardContent sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <CardContent sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              height: '100%',
+              padding: '0 !important', 
+              '&:last-child': { paddingBottom: '0 !important' } 
+            }}>
               <img 
-                src="/src/assets/mainlogo.png" 
-                alt="LP Yacht Service Logo" 
+                src="/src/assets/gallery/CarPhoto.jpg" 
+                alt={t('home_about_image_alt')}
                 style={{ 
                   width: '100%', 
-                  maxWidth: '350px',
-                  height: 'auto'
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block'
                 }}
               />
             </CardContent>
@@ -142,35 +150,23 @@ function Home() {
             fontWeight: 700
           }}
         >
-          Γιατί να μας Επιλέξετε
+          {t('home_why_choose_us_title')}
         </Typography>
 
         <div className="why-cards">
           <div className="why-card">
-            <h3>⚙️ Εξειδίκευση & Εμπειρία</h3>
-            <p>
-              Με πολυετή εμπειρία στη συντήρηση και επισκευή μηχανών σκαφών, 
-              προσφέρουμε ολοκληρωμένες λύσεις με τεχνική ακρίβεια και υπευθυνότητα. 
-              Κάθε έργο εκτελείται με ακρίβεια και προσοχή στη λεπτομέρεια.
-            </p>
+            <h3>{t('home_why_card1_title')}</h3>
+            <p>{t('home_why_card1_description')}</p>
           </div>
 
           <div className="why-card">
-            <h3>⏱️ Άμεση & Αξιόπιστη Εξυπηρέτηση</h3>
-            <p>
-              Αντιλαμβανόμαστε τη σημασία του χρόνου σας. Αναλαμβάνουμε κάθε εργασία 
-              με συνέπεια και ταχύτητα, διασφαλίζοντας την άμεση παράδοση του σκάφους 
-              σας σε άριστη κατάσταση. Διαθέσιμοι 24/7 για επείγουσες ανάγκες.
-            </p>
+            <h3>{t('home_why_card2_title')}</h3>
+            <p>{t('home_why_card2_description')}</p>
           </div>
 
           <div className="why-card">
-            <h3>⚓ Ποιότητα & Εμπιστοσύνη</h3>
-            <p>
-              Εργαζόμαστε με γνώμονα την ποιότητα και τη διαφάνεια. Χρησιμοποιούμε 
-              μόνο τα καλύτερα υλικά και εξοπλισμό. Οι πελάτες μας γνωρίζουν ότι μπορούν 
-              να μας εμπιστευτούν για κάθε τεχνική ανάγκη του σκάφους τους.
-            </p>
+            <h3>{t('home_why_card3_title')}</h3>
+            <p>{t('home_why_card3_description')}</p>
           </div>
         </div>
       </section>
@@ -192,7 +188,7 @@ function Home() {
               fontSize: { xs: '1.8rem', md: '2.2rem' }
             }}
           >
-            Έτοιμοι να Αρχίσουμε το Επόμενο Σας Project;
+            {t('home_cta_title')}
           </Typography>
           <Typography 
             variant="h6" 
@@ -203,7 +199,7 @@ function Home() {
               fontSize: { xs: '1rem', md: '1.2rem' }
             }}
           >
-            Επικοινωνήστε μαζί μας σήμερα για δωρεάν τεχνική γνώμη και προσφορά
+            {t('home_cta_subtitle')}
           </Typography>
           <Button
             component={Link}
@@ -224,7 +220,7 @@ function Home() {
               transition: 'all 0.3s ease'
             }}
           >
-            Επικοινωνήστε Τώρα
+            {t('home_cta_button')}
           </Button>
         </Box>
       </section>

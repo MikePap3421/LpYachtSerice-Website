@@ -4,8 +4,11 @@ import { Box, Typography, Card, CardMedia, Button, Modal, IconButton } from '@mu
 import { useState, useRef } from 'react';
 import { Close, NavigateBefore, NavigateNext } from '@mui/icons-material';
 import '/src/components/Home.css';
+import { useTranslation } from 'react-i18next';
 
 function Projects() {
+  const { t } = useTranslation();
+  
   // Array of all your gallery images with correct naming
   const galleryImages = Array.from({ length: 21 }, (_, i) => 
     `/src/assets/gallery/g${i + 1}.jpg`
@@ -75,12 +78,12 @@ function Projects() {
             variant="h2" 
             className="services-title"
             sx={{ 
-              fontSize: { xs: '2rem', md: '2.5rem' },
+              fontSize: { xs: '2.5rem', md: '3.5rem'  },
               fontWeight: 700,
               marginBottom: '0.5rem'
             }}
           >
-            Εργασίες
+            {t('projects_hero_title')}
           </Typography>
           
           <Typography 
@@ -93,7 +96,7 @@ function Projects() {
               fontSize: { xs: '1.1rem', md: '1.3rem' }
             }}
           >
-            Απολαύστε μια γκαλερί από επιλεγμένες μας εργασίες και projects
+            {t('projects_hero_subtitle')}
           </Typography>
         </Box>
       </section>
@@ -135,7 +138,7 @@ function Projects() {
                 <CardMedia
                   component="img"
                   image={image}
-                  alt={`Project ${index + 1}`}
+                  alt={t('projects_image_alt', { number: index + 1 })}
                   sx={{ 
                     width: '100%',
                     height: 300,
@@ -206,7 +209,7 @@ function Projects() {
                   transition: 'all 0.3s ease'
                 }}
               >
-                Δείτε Περισσότερες Εργασίες
+                {t('projects_see_more_button')}
               </Button>
             </Box>
           )}
@@ -234,7 +237,7 @@ function Projects() {
                   transition: 'all 0.3s ease'
                 }}
               >
-                Λιγότερες Εργασίες
+                {t('projects_see_less_button')}
               </Button>
             </Box>
           )}
@@ -321,7 +324,7 @@ function Projects() {
           {selectedImage !== null && (
             <img
               src={galleryImages[selectedImage]}
-              alt={`Project ${selectedImage + 1}`}
+              alt={t('projects_image_alt', { number: selectedImage + 1 })}
               style={{
                 maxWidth: '100%',
                 maxHeight: '90vh',

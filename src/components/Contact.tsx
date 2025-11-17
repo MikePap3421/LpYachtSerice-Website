@@ -3,8 +3,11 @@ import Navbar from "./Navbar";
 import { Box, TextField, Button, Typography, Card, CardContent } from '@mui/material';
 import { useState } from 'react';
 import '/src/components/Home.css';
+import { useTranslation } from 'react-i18next';
 
 function Contact() {
+  const { t } = useTranslation();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,7 +28,7 @@ function Contact() {
     e.preventDefault();
     // TODO: Connect to email service later
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
+    alert(t('contact_success_message'));
     
     // Reset form
     setFormData({
@@ -43,7 +46,7 @@ function Contact() {
       
       {/* Contact Form Section */}
       <section className="contact-section">
-        <Box sx={{ maxWidth: 800, margin: '0 auto', padding: '4rem 2rem' }}>
+        <Box sx={{ maxWidth: 800, margin: '0 auto', padding: '2rem 2rem 2rem' }}>
           <Typography 
             variant="h2" 
             component="h1" 
@@ -52,10 +55,10 @@ function Contact() {
               color: '#274688',
               fontWeight: 700,
               marginBottom: '1rem',
-              fontSize: { xs: '2rem', md: '2.5rem' }
+              fontSize: { xs: '2.5rem', md: '3.5rem'  }
             }}
           >
-            Επικοινωνία
+            {t('contact_hero_title')}
           </Typography>
           
           <Typography 
@@ -67,7 +70,7 @@ function Contact() {
               opacity: 0.8
             }}
           >
-            Επικοινωνήστε μαζί μας για οποιαδήποτε ερώτηση ή ανάγκη
+            {t('contact_hero_subtitle')}
           </Typography>
 
           <Card 
@@ -85,7 +88,7 @@ function Contact() {
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
                     <TextField
                       fullWidth
-                      label="Ονοματεπώνυμο *"
+                      label={t('contact_name_label')}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -94,7 +97,7 @@ function Contact() {
                     />
                     <TextField
                       fullWidth
-                      label="Email *"
+                      label={t('contact_email_label')}
                       name="email"
                       type="email"
                       value={formData.email}
@@ -108,7 +111,7 @@ function Contact() {
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
                     <TextField
                       fullWidth
-                      label="Τηλέφωνο"
+                      label={t('contact_phone_label')}
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
@@ -116,7 +119,7 @@ function Contact() {
                     />
                     <TextField
                       fullWidth
-                      label="Θέμα *"
+                      label={t('contact_subject_label')}
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
@@ -128,7 +131,7 @@ function Contact() {
                   {/* Message */}
                   <TextField
                     fullWidth
-                    label="Μήνυμα *"
+                    label={t('contact_message_label')}
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
@@ -161,36 +164,12 @@ function Contact() {
                       minWidth: 200
                     }}
                   >
-                    Αποστολή Μηνύματος
+                    {t('contact_submit_button')}
                   </Button>
                 </Box>
               </form>
             </CardContent>
           </Card>
-
-          {/* Contact Info */}
-          <Box sx={{ textAlign: 'center', marginTop: '4rem' }}>
-            <Typography variant="h5" sx={{ color: '#274688', marginBottom: '2rem', fontWeight: 600 }}>
-              Εναλλακτικοί Τρόποι Επικοινωνίας
-            </Typography>
-            
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, justifyContent: 'center' }}>
-              <Box>
-                <Typography variant="h6" sx={{ color: '#274688', fontWeight: 600 }}>Τηλέφωνο</Typography>
-                <Typography>+30 6945663120</Typography>
-              </Box>
-              
-              <Box>
-                <Typography variant="h6" sx={{ color: '#274688', fontWeight: 600 }}>Email</Typography>
-                <Typography>lpyachtservice@gmail.com</Typography>
-              </Box>
-              
-              <Box>
-                <Typography variant="h6" sx={{ color: '#274688', fontWeight: 600 }}>Τοποθεσία</Typography>
-                <Typography>Πρέβεζα, Ελλάδα</Typography>
-              </Box>
-            </Box>
-          </Box>
         </Box>
       </section>
       
