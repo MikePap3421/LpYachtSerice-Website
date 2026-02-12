@@ -4,13 +4,15 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
+      // Navigation
       nav: {
         home: "Home",
         services: "Services",
         projects: "Projects", 
         contact: "Contact"
       },
-      // Add home page translations here:
+      
+      // Home Page
       home_hero_title: "Welcome to",
       home_hero_company: "LP Yacht Service",
       home_hero_subtitle: "Quality, trust and experience in every project",
@@ -37,12 +39,12 @@ const resources = {
       home_cta_subtitle: "Contact us today for free technical advice and quote",
       home_cta_button: "Contact Now",
 
-       // Services translations
+      // Services Page
       services_hero_title: "Services",
       services_hero_subtitle: "Specialized solutions for every need of your vessel. Quality, reliability and professionalism in every project.",
       services_includes: "Includes:",
-      
-      // Mechanical Services
+
+      // Service Categories
       services_mechanical_title: "Mechanical Works",
       services_mechanical_description: "Specialized repair and maintenance services for boat engines. Complete maintenance, fault repair and system upgrades with knowledge and experience in all types of engines.",
       services_mechanical_feature1: "Engine maintenance",
@@ -50,7 +52,6 @@ const resources = {
       services_mechanical_feature3: "Upgrades",
       services_mechanical_feature4: "Diagnostics",
       
-      // Conversions & Upgrades
       services_conversions_title: "Conversions & Upgrades",
       services_conversions_description: "Professional boat conversion and upgrade services. We undertake modifications for performance improvement, layout changes and adaptations according to your needs.",
       services_conversions_feature1: "Rebuilds",
@@ -58,7 +59,6 @@ const resources = {
       services_conversions_feature3: "Optimizations",
       services_conversions_feature4: "Adaptations",
       
-      // Electrical Systems
       services_electrical_title: "Electrical Systems",
       services_electrical_description: "Professional inspection, upgrade and repair of electrical systems for safe and reliable operation of your vessel.",
       services_electrical_feature1: "Installations",
@@ -66,7 +66,6 @@ const resources = {
       services_electrical_feature3: "Safety systems",
       services_electrical_feature4: "Automations",
       
-      // Boat Maintenance
       services_maintenance_title: "Boat Maintenance",
       services_maintenance_description: "Complete maintenance programs for all types of boats. Preventive maintenance, safety checks and scheduled interventions.",
       services_maintenance_feature1: "Scheduled maintenance",
@@ -74,7 +73,6 @@ const resources = {
       services_maintenance_feature3: "Replacements",
       services_maintenance_feature4: "Inspections",
       
-      // Cleaning & Care
       services_cleaning_title: "Cleaning & Care",
       services_cleaning_description: "Specialized boat cleaning and care services. Complete cleaning of interior and exterior spaces, polishing and protective interventions.",
       services_cleaning_feature1: "Exterior cleaning",
@@ -82,7 +80,6 @@ const resources = {
       services_cleaning_feature3: "Polishing",
       services_cleaning_feature4: "Protection",
       
-      // Consulting Services
       services_consulting_title: "Consulting Services",
       services_consulting_description: "Professional advice for the maintenance, optimization and care of your vessel. Technical opinions and solutions tailored to your needs.",
       services_consulting_feature1: "Technical opinions",
@@ -90,35 +87,70 @@ const resources = {
       services_consulting_feature3: "Support",
       services_consulting_feature4: "Advice",
 
-      // Projects translations
+      // Projects Page
       projects_hero_title: "Projects",
       projects_hero_subtitle: "Enjoy a gallery of our selected works and projects",
       projects_see_more_button: "View More Projects",
       projects_see_less_button: "Fewer Projects",
       projects_image_alt: "Project {{number}}",
+      projects_teaser_title: "See Our Work in Action",
+      projects_teaser_subtitle: "A taste of the projects we have completed",
+      projects_teaser_button: "View More Projects",
+      projects_teaser_image_alt: "Project teaser {{number}}",
 
-      // Contact translations
+      // Contact Page
       contact_hero_title: "Contact",
       contact_hero_subtitle: "Contact us for any question or need",
       contact_name_label: "Full Name",
       contact_email_label: "Email",
       contact_phone_label: "Phone",
-      contact_subject_label: "Subject",
+      contact_subject_label: "Topic",
       contact_message_label: "Message",
       contact_submit_button: "Send Message",
+      contact_sending: "Sending...",
       contact_success_message: "Thank you for your message! We will get back to you soon.",
+      contact_error_message: "Failed to send message. Please try again or contact us directly.",
+      contact_error_name_required: "Name is required*",
+      contact_error_email_required: "Email is required*",
+      contact_error_email_invalid: "Please enter a valid email address",
+      contact_error_subject_required: "Topic is required*",
+      contact_error_message_required: "Message is required*",
+      contact_error_message_too_short: "Message should be at least 10 characters long",
+      
+
+      // Footer
+      footer_company_name: "LP Yacht Service",
+      footer_description: "Specialized boat maintenance and repair services. Trust, quality and professionalism at sea.",
+      footer_contact_title: "Contact",
+      footer_phone: "+30 6945663120",
+      footer_email: "lpyachtservice@gmail.com", 
+      footer_location: "Preveza, Greece",
+      footer_follow_us: "Follow Us",
+      footer_copyright: "LP Yacht Service. All rights reserved.",
+      footer_contact_us: "Contact Us",
+      footer_whatsapp: "Chat on WhatsApp",
+      whatsapp_default_message: "Hello! I would like to get more information about your services.",
+      footer_contact_us: "Contact Us",
+      footer_whatsapp: "Chat on WhatsApp",
+      footer_viber: "Chat on Viber",
+      whatsapp_default_message: "Hello! I would like to get more information about your services.",
+      viber_default_message: "Hello! I would like to get more information about your services.",
+
+      // Drawer
       drawer_language_title: "Language"
     }
   },
   el: {
     translation: {
+      // Navigation
       nav: {
         home: "Αρχική",
         services: "Υπηρεσίες",
         projects: "Εργασίες",
         contact: "Επικοινωνία"
       },
-      // home page translations
+      
+      // Home Page
       home_hero_title: "Καλώς Ήρθατε στην",
       home_hero_company: "LP Yacht Service", 
       home_hero_subtitle: "Ποιότητα, εμπιστοσύνη και εμπειρία σε κάθε έργο",
@@ -141,26 +173,16 @@ const resources = {
       home_why_card3_title: "⚓ Ποιότητα & Εμπιστοσύνη",
       home_why_card3_description: "Εργαζόμαστε με γνώμονα την ποιότητα και τη διαφάνεια. Χρησιμοποιούμε μόνο τα καλύτερα υλικά και εξοπλισμό. Οι πελάτες μας γνωρίζουν ότι μπορούν να μας εμπιστευτούν για κάθε τεχνική ανάγκη του σκάφους τους.",
       
-      home_cta_title: "Έτοιμοι να Αρχίσουμε το Επόμενο Σας Project;",
+      home_cta_title: "Έτοιμοι να Αρχίσετε το Επόμενο Έργο Σας;",
       home_cta_subtitle: "Επικοινωνήστε μαζί μας σήμερα για δωρεάν τεχνική γνώμη και προσφορά",
       home_cta_button: "Επικοινωνήστε Τώρα",
-      
-      // footer translations
-       footer_company_name: "LP Yacht Service",
-      footer_description: "Specialized boat maintenance and repair services. Trust, quality and professionalism at sea.",
-      footer_contact_title: "Contact",
-      footer_phone: "+30 6945663120",
-      footer_email: "lpyachtservice@gmail.com", 
-      footer_location: "Preveza, Greece",
-      footer_follow_us: "Follow Us",
-      footer_copyright: "LP Yacht Service. All rights reserved.",
 
-      // Services translations
+      // Services Page
       services_hero_title: "Υπηρεσίες",
       services_hero_subtitle: "Εξειδικευμένες λύσεις για κάθε ανάγκη του σκάφους σας. Ποιότητα, αξιοπιστία και επαγγελματισμός σε κάθε έργο.",
       services_includes: "Περιλαμβάνει:",
-      
-      // Mechanical Services
+
+      // Service Categories
       services_mechanical_title: "Μηχανικές Εργασίες",
       services_mechanical_description: "Εξειδικευμένες υπηρεσίες επισκευής και συντήρησης μηχανών σκαφών. Πλήρης συντήρηση, επιδιόρθωση βλαβών και αναβάθμιση συστημάτων με γνώση και εμπειρία σε όλους τους τύπους κινητήρων.",
       services_mechanical_feature1: "Συντήρηση κινητήρων",
@@ -168,7 +190,6 @@ const resources = {
       services_mechanical_feature3: "Αναβαθμίσεις",
       services_mechanical_feature4: "Διαγνωστικά",
       
-      // Conversions & Upgrades
       services_conversions_title: "Μετατροπές & Αναβαθμίσεις",
       services_conversions_description: "Επαγγελματικές υπηρεσίες μετατροπών και αναβαθμίσεων σκαφών. Αναλαμβάνουμε τροποποιήσεις για βελτίωση απόδοσης, αλλαγές διαμόρφωσης και προσαρμογές σύμφωνα με τις ανάγκες σας.",
       services_conversions_feature1: "Ανακατασκευές",
@@ -176,7 +197,6 @@ const resources = {
       services_conversions_feature3: "Βελτιστοποιήσεις",
       services_conversions_feature4: "Προσαρμογές",
       
-      // Electrical Systems
       services_electrical_title: "Ηλεκτρικά Συστήματα",
       services_electrical_description: "Επαγγελματικός έλεγχος, αναβάθμιση και επιδιόρθωση ηλεκτρικών συστημάτων για ασφαλή και αξιόπιστη λειτουργία του σκάφους σας.",
       services_electrical_feature1: "Εγκαταστάσεις",
@@ -184,7 +204,6 @@ const resources = {
       services_electrical_feature3: "Συστήματα ασφαλείας",
       services_electrical_feature4: "Αυτοματισμοί",
       
-      // Boat Maintenance
       services_maintenance_title: "Συντήρηση Σκαφών",
       services_maintenance_description: "Ολοκληρωμένα προγράμματα συντήρησης για όλα τα είδη σκαφών. Προληπτική συντήρηση, ελέγχους ασφαλείας και προγραμματισμένες επεμβάσεις.",
       services_maintenance_feature1: "Προγραμματισμένη συντήρηση",
@@ -192,7 +211,6 @@ const resources = {
       services_maintenance_feature3: "Αντικαταστάσεις",
       services_maintenance_feature4: "Επιθεωρήσεις",
       
-      // Cleaning & Care
       services_cleaning_title: "Καθαρισμός & Φροντίδα",
       services_cleaning_description: "Εξειδικευμένες υπηρεσίες καθαρισμού και φροντίδας σκαφών. Πλήρης καθαρισμός εσωτερικών και εξωτερικών χώρων, πολυλόγηση και προστατευτικές επεμβάσεις.",
       services_cleaning_feature1: "Εξωτερικός καθαρισμός",
@@ -200,22 +218,25 @@ const resources = {
       services_cleaning_feature3: "Πολυλόγηση",
       services_cleaning_feature4: "Προστασία",
       
-      // Consulting Services
       services_consulting_title: "Συμβουλευτικές Υπηρεσίες",
       services_consulting_description: "Επαγγελματικές συμβουλές για τη συντήρηση, βελτιστοποίηση και φροντίδα του σκάφους σας. Τεχνικές γνώμες και λύσεις προσαρμοσμένες στις ανάγκες σας.",
       services_consulting_feature1: "Τεχνικές γνώμες",
-      services_consulting_feature2: "Σχεδιασμός projects",
+      services_consulting_feature2: "Σχεδιασμός έργων",
       services_consulting_feature3: "Υποστήριξη",
       services_consulting_feature4: "Συμβουλές",
 
-      // Projects translations
+      // Projects Page
       projects_hero_title: "Εργασίες",
-      projects_hero_subtitle: "Απολαύστε μια γκαλερί από επιλεγμένες μας εργασίες και projects",
+      projects_hero_subtitle: "Απολαύστε μια γκαλερί από επιλεγμένες μας εργασίες και έργα",
       projects_see_more_button: "Δείτε Περισσότερες Εργασίες",
       projects_see_less_button: "Λιγότερες Εργασίες",
       projects_image_alt: "Εργασία {{number}}",
+      projects_teaser_title: "Δείτε τις Εργασίες μας σε Δράση",
+      projects_teaser_subtitle: "Μια γεύση από τα projects που έχουμε ολοκληρώσει",
+      projects_teaser_button: "Δείτε Περισσότερες Εργασίες",
+      projects_teaser_image_alt: "Project teaser {{number}}",
 
-      // Contact translations
+      // Contact Page
       contact_hero_title: "Επικοινωνία",
       contact_hero_subtitle: "Επικοινωνήστε μαζί μας για οποιαδήποτε ερώτηση ή ανάγκη",
       contact_name_label: "Ονοματεπώνυμο",
@@ -224,7 +245,35 @@ const resources = {
       contact_subject_label: "Θέμα",
       contact_message_label: "Μήνυμα",
       contact_submit_button: "Αποστολή Μηνύματος",
+      contact_sending: "Αποστολή...",
       contact_success_message: "Σας ευχαριστούμε για το μήνυμά σας! Θα επικοινωνήσουμε μαζί σας σύντομα.",
+      contact_error_message: "Αποτυχία αποστολής μηνύματος. Παρακαλώ δοκιμάστε ξανά ή επικοινωνήστε μαζί μας απευθείας.",contact_error_name_required: "Το όνομα είναι υποχρεωτικό*",
+      contact_error_email_required: "Το email είναι υποχρεωτικό*",
+      contact_error_email_invalid: "Παρακαλώ εισάγετε ένα έγκυρο email",
+      contact_error_subject_required: "Το θέμα είναι υποχρεωτικό*",
+      contact_error_message_required: "Το μήνυμα είναι υποχρεωτικό*",
+      contact_error_message_too_short: "Το μήνυμα πρέπει να είναι τουλάχιστον 10 χαρακτήρες",
+      
+
+      // Footer
+      footer_company_name: "LP Yacht Service",
+      footer_description: "Εξειδικευμένες υπηρεσίες συντήρησης και επισκευής σκαφών. Εμπιστοσύνη, ποιότητα και επαγγελματισμός στη θάλασσα.",
+      footer_contact_title: "Επικοινωνία", 
+      footer_phone: "+30 6945663120",
+      footer_email: "lpyachtservice@gmail.com",
+      footer_location: "Πρέβεζα, Ελλάδα",
+      footer_follow_us: "Ακολουθήστε μας",
+      footer_copyright: "LP Yacht Service. Με επιφύλαξη παντός δικαιώματος.",
+      footer_contact_us: "Επικοινωνήστε Μαζί Μας",
+      footer_whatsapp: "Συνομιλία στο WhatsApp",
+      whatsapp_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
+      footer_contact_us: "Επικοινωνήστε Μαζί Μας",
+      footer_whatsapp: "Συνομιλία στο WhatsApp",
+      footer_viber: "Συνομιλία στο Viber",
+      whatsapp_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
+      viber_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
+
+      // Drawer
       drawer_language_title: "Γλώσσα"
     }
   }

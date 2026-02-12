@@ -4,25 +4,39 @@ import { Box, Typography, Card, CardMedia, Button, Modal, IconButton } from '@mu
 import { useState, useRef } from 'react';
 import { Close, NavigateBefore, NavigateNext } from '@mui/icons-material';
 import '/src/components/Home.css';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
 function Projects() {
   const { t } = useTranslation();
   
-  // Array of all your gallery images with correct naming
   const galleryImages = Array.from({ length: 21 }, (_, i) => 
-    `/src/assets/gallery/g${i + 1}.jpg`
+    `/gallery/g${i + 1}.jpg`
   );
 
   const [showAll, setShowAll] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const gallerySectionRef = useRef<HTMLDivElement>(null);
   
-  // Show first 6 images initially, or all if showAll is true
   const displayedImages = showAll ? galleryImages : galleryImages.slice(0, 6);
+
+  const handleProjectScroll = () => {
+    if (!showAll && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('.gallery-card-item') as HTMLElement;
+      if (firstCard) {
+        const totalStep = firstCard.offsetWidth + 24;
+        const newIndex = Math.round(container.scrollLeft / totalStep);
+        setActiveProjectIndex(newIndex);
+      }
+    }
+  };
 
   const handleShowLess = () => {
     setShowAll(false);
+    setActiveProjectIndex(0); 
     if (gallerySectionRef.current) {
       window.scrollTo({
         top: gallerySectionRef.current.offsetTop - 100,
@@ -31,13 +45,8 @@ function Projects() {
     }
   };
 
-  const handleImageClick = (index: number) => {
-    setSelectedImage(index);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedImage(null);
-  };
+  const handleImageClick = (index: number) => setSelectedImage(index);
+  const handleCloseModal = () => setSelectedImage(null);
 
   const goToNext = () => {
     if (selectedImage !== null) {
@@ -51,307 +60,78 @@ function Projects() {
     }
   };
 
-  // Handle keyboard navigation
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowRight') {
-      goToNext();
-    } else if (event.key === 'ArrowLeft') {
-      goToPrev();
-    } else if (event.key === 'Escape') {
-      handleCloseModal();
-    }
-  };
-
   return (
-    <div style={{ backgroundColor: '#f2f2f3ff', minHeight: '100vh' }}>
+    <div className="page-wrapper">
+      <Helmet>
+        <title>LP Yacht Service | {t('nav.projects')}</title>
+        <meta name="description" content={t('projects_hero_subtitle')} />
+      </Helmet>
       <Navbar/>
       
-      {/* Projects Hero Section */}
-      <section className="projects-section">
-        <Box sx={{ 
-          maxWidth: 1200, 
-          margin: '0 auto', 
-          padding: '4rem 2rem 2rem',
-          textAlign: 'center'
-        }}>
-          <Typography 
-            variant="h2" 
-            className="services-title"
-            sx={{ 
-              fontSize: { xs: '2.5rem', md: '3.5rem'  },
-              fontWeight: 700,
-              marginBottom: '0.5rem'
-            }}
-          >
-            {t('projects_hero_title')}
-          </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              color: '#1B263B',
-              opacity: 0.8,
-              maxWidth: 600,
-              margin: '0 auto',
-              fontSize: { xs: '1.1rem', md: '1.3rem' }
-            }}
-          >
-            {t('projects_hero_subtitle')}
-          </Typography>
-        </Box>
+      <section className="projects-hero-section">
+        <Typography variant="h2" className="projects-main-title">
+          {t('projects_hero_title')}
+        </Typography>
+        <Typography variant="h6" className="projects-subtitle">
+          {t('projects_hero_subtitle')}
+        </Typography>
       </section>
 
-      {/* Gallery Section with ref */}
-      <section className="services-section" ref={gallerySectionRef}>
-        <Box sx={{ maxWidth: 1500, margin: '0 auto', padding: '0 2rem 4rem' }}>
-          <Box 
-            sx={{ 
-              display: 'grid',
-              gridTemplateColumns: { 
-                xs: '1fr', 
-                sm: 'repeat(2, 1fr)', 
-                md: 'repeat(3, 1fr)' 
-              },
-              gap: 3,
-              marginBottom: showAll ? 0 : 4
-            }}
+      <section className="gallery-section-container" ref={gallerySectionRef}>
+        <div className="gallery-wrapper">
+          {/* CLEAN LOGIC: Toggles between 'services-slider' (horizontal) 
+              and 'projects-grid-vertical' (2-column vertical) 
+          */}
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleProjectScroll}
+            className={showAll ? "projects-grid-vertical" : "services-slider"}
           >
             {displayedImages.map((image, index) => (
               <Card 
                 key={index}
-                sx={{ 
-                  borderRadius: 3,
-                  overflow: 'hidden',
-                  boxShadow: '0 6px 20px rgba(39, 70, 136, 0.1)',
-                  transition: 'all 0.3s ease',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  cursor: 'pointer',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 30px rgba(39, 70, 136, 0.2)'
-                  }
-                }}
-                onClick={() => handleImageClick(showAll ? index : index)}
+                className="gallery-card-item"
+                onClick={() => handleImageClick(index)}
               >
                 <CardMedia
                   component="img"
                   image={image}
                   alt={t('projects_image_alt', { number: index + 1 })}
-                  sx={{ 
-                    width: '100%',
-                    height: 300,
-                    objectFit: 'cover',
-                    flexGrow: 1,
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05)'
-                    }
-                  }}
+                  className="gallery-image"
                 />
-                
-                {/* Hover overlay with view icon */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%) scale(0.8)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    borderRadius: '50%',
-                    width: 60,
-                    height: 60,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    opacity: 0,
-                    transition: 'all 0.3s ease',
-                    pointerEvents: 'none',
-                  }}
-                  className="view-icon"
-                >
-                  <Box
-                    sx={{
-                      width: 0,
-                      height: 0,
-                      borderTop: '10px solid transparent',
-                      borderBottom: '10px solid transparent',
-                      borderLeft: '15px solid #274688',
-                      transform: 'translateX(2px)'
-                    }}
-                  />
-                </Box>
               </Card>
             ))}
-          </Box>
+          </div>
 
-          {/* See More/Less Button */}
           {!showAll && (
-            <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={() => setShowAll(true)}
-                sx={{
-                  borderColor: '#274688',
-                  color: '#274688',
-                  padding: '12px 40px',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 2,
-                  '&:hover': {
-                    backgroundColor: 'rgba(39, 70, 136, 0.1)',
-                    borderColor: '#1B3266',
-                    color: '#1B3266',
-                    transform: 'translateY(-2px)'
-                  },
-                  transition: 'all 0.3s ease'
-                }}
-              >
+            <div className="dot-container">
+              {displayedImages.map((_, i) => (
+                <div key={i} className={`dot ${activeProjectIndex === i ? 'active' : ''}`} />
+              ))}
+            </div>
+          )}
+
+          <Box className="gallery-actions">
+            {!showAll ? (
+              <Button variant="contained" className="primary-button" onClick={() => setShowAll(true)}>
                 {t('projects_see_more_button')}
               </Button>
-            </Box>
-          )}
-
-          {/* Show Less Button when all are displayed */}
-          {showAll && (
-            <Box sx={{ textAlign: 'center', marginTop: '3rem' }}>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={handleShowLess}
-                sx={{
-                  borderColor: '#274688',
-                  color: '#274688',
-                  padding: '12px 40px',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 2,
-                  '&:hover': {
-                    backgroundColor: 'rgba(39, 70, 136, 0.1)',
-                    borderColor: '#1B3266',
-                    color: '#1B3266',
-                    transform: 'translateY(-2px)'
-                  },
-                  transition: 'all 0.3s ease'
-                }}
-              >
+            ) : (
+              <Button variant="outlined" className="secondary-button" onClick={handleShowLess}>
                 {t('projects_see_less_button')}
               </Button>
-            </Box>
-          )}
-        </Box>
+            )}
+          </Box>
+        </div>
       </section>
 
-      {/* Lightbox Modal */}
-      <Modal
-        open={selectedImage !== null}
-        onClose={handleCloseModal}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backdropFilter: 'blur(10px)',
-        }}
-      >
-        <Box
-          sx={{
-            position: 'relative',
-            maxWidth: '90vw',
-            maxHeight: '90vh',
-            outline: 'none'
-          }}
-        >
-          {/* Close Button */}
-          <IconButton
-            onClick={handleCloseModal}
-            sx={{
-              position: 'absolute',
-              top: 16,
-              right: 16,
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              zIndex: 1,
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              }
-            }}
-          >
-            <Close />
-          </IconButton>
-
-          {/* Navigation Buttons */}
-          <IconButton
-            onClick={goToPrev}
-            sx={{
-              position: 'absolute',
-              left: 16,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              zIndex: 1,
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              }
-            }}
-          >
-            <NavigateBefore />
-          </IconButton>
-
-          <IconButton
-            onClick={goToNext}
-            sx={{
-              position: 'absolute',
-              right: 16,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              zIndex: 1,
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              }
-            }}
-          >
-            <NavigateNext />
-          </IconButton>
-
-          {/* Image */}
+      <Modal open={selectedImage !== null} onClose={handleCloseModal} className="lightbox-modal">
+        <Box className="modal-content">
+          <IconButton onClick={handleCloseModal} className="modal-close"><Close /></IconButton>
+          <IconButton onClick={goToPrev} className="modal-nav modal-prev"><NavigateBefore /></IconButton>
+          <IconButton onClick={goToNext} className="modal-nav modal-next"><NavigateNext /></IconButton>
           {selectedImage !== null && (
-            <img
-              src={galleryImages[selectedImage]}
-              alt={t('projects_image_alt', { number: selectedImage + 1 })}
-              style={{
-                maxWidth: '100%',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-                borderRadius: 8,
-                display: 'block'
-              }}
-            />
-          )}
-
-          {/* Image Counter */}
-          {selectedImage !== null && (
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 16,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                padding: '8px 16px',
-                borderRadius: 4,
-                fontSize: '0.9rem'
-              }}
-            >
-              {selectedImage + 1} / {galleryImages.length}
-            </Box>
+            <img src={galleryImages[selectedImage]} alt="Project" className="modal-image" />
           )}
         </Box>
       </Modal>

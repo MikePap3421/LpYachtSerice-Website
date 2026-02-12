@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // 1. Import useLocation
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,6 +16,10 @@ function Navbar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [languageMenuAnchor, setLanguageMenuAnchor] = React.useState<null | HTMLElement>(null);
   const { t, i18n } = useTranslation();
+  
+  // 2. Get the current URL path
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
@@ -33,14 +37,15 @@ function Navbar() {
     handleLanguageClose();
   };
 
-  // Get the current language flag icon
   const getCurrentLanguageIcon = () => {
-    const currentLanguage = i18n.language;
-    if (currentLanguage === 'el') {
-      return "/src/assets/Greek.png"; // Greek flag
-    } else {
-      return "/src/assets/English.png"; // English flag
-    }
+    return i18n.language === 'el' ? "/src/assets/Greek.png" : "/src/assets/English.png";
+  };
+
+  // Helper function to check if a link is active
+  const isActive = (path: string) => {
+    if (path === '/' && currentPath === '/') return true;
+    if (path !== '/' && currentPath.startsWith(path)) return true;
+    return false;
   };
 
   return (
@@ -96,7 +101,7 @@ function Navbar() {
               flexGrow: 0,
             }}
           >
-            {/* --- Logo that links to home --- */}
+            {/* --- Logo --- */}
             <Typography
               variant="h6"
               component={Link}
@@ -119,64 +124,44 @@ function Navbar() {
               </Box>
             </Typography>
 
-            {/* --- Desktop Navigation Links --- */}
+            {/* --- Desktop Navigation Links with Active State --- */}
             <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-              <Button
-                component={Link}
-                to="/"
-                onClick={handleDrawerClose}
-                sx={{
-                  fontWeight: 550,
-                  fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
-                  color: "inherit",
-                  textTransform: "none",
-                  "&:hover": { color: "primary.main", backgroundColor: "rgba(83, 122, 194, 0.19)"},
-                }}
-              >
-                {t('nav.home')}
-              </Button>
-              <Button
-                component={Link}
-                to="/services"
-                onClick={handleDrawerClose}
-                sx={{
-                  fontWeight: 550,
-                  fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
-                  color: "inherit",
-                  textTransform: "none",
-                  "&:hover": { color: "primary.main", backgroundColor: "rgba(83, 122, 194, 0.19)" },
-                }}
-              >
-                {t('nav.services')}
-              </Button>
-              <Button
-                component={Link}
-                to="/projects"
-                onClick={handleDrawerClose}
-                sx={{
-                  fontWeight: 550,
-                  fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
-                  color: "inherit",
-                  textTransform: "none",
-                  "&:hover": { color: "primary.main", backgroundColor: "rgba(83, 122, 194, 0.19)" },
-                }}
-              >
-                {t('nav.projects')}
-              </Button>
-              <Button
-                component={Link}
-                to="/contact"
-                onClick={handleDrawerClose}
-                sx={{
-                  fontWeight: 550,
-                  fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
-                  color: "inherit",
-                  textTransform: "none",
-                  "&:hover": { color: "primary.main", backgroundColor: "rgba(83, 122, 194, 0.19)" },
-                }}
-              >
-                {t('nav.contact')}
-              </Button>
+              {[
+                { label: 'home', path: '/' },
+                { label: 'services', path: '/services' },
+                { label: 'projects', path: '/projects' },
+                { label: 'contact', path: '/contact' }
+              ].map((item) => (
+                <Button
+                  key={item.label}
+                  component={Link}
+                  to={item.path}
+                  onClick={handleDrawerClose}
+                  sx={{
+                    fontWeight: isActive(item.path) ? 700 : 550, // Bold if active
+                    fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
+                    color: isActive(item.path) ? "primary.main" : "inherit", // Blue if active
+                    textTransform: "none",
+                    position: 'relative',
+                    "&:after": isActive(item.path) ? {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '10%',
+                      width: '80%',
+                      height: '3px',
+                      backgroundColor: '#274688',
+                      borderRadius: '2px'
+                    } : {},
+                    "&:hover": { 
+                      color: "primary.main", 
+                      backgroundColor: "rgba(83, 122, 194, 0.19)"
+                    },
+                  }}
+                >
+                  {t(`nav.${item.label}`)}
+                </Button>
+              ))}
             </Box>
           </Box>
 
@@ -192,10 +177,9 @@ function Navbar() {
                 }
               }}
             >
-              {/* Replace LanguageIcon with flag images */}
               <img 
                 src={getCurrentLanguageIcon()} 
-                alt={i18n.language === 'el' ? 'Greek Flag' : 'English Flag'}
+                alt="Language Flag"
                 style={{ 
                   width: 24, 
                   height: 24,
@@ -206,7 +190,6 @@ function Navbar() {
               />
             </IconButton>
 
-            {/* Language Dropdown Menu */}
             <Menu
               anchorEl={languageMenuAnchor}
               open={Boolean(languageMenuAnchor)}
@@ -216,12 +199,7 @@ function Navbar() {
                 <img 
                   src="/src/assets/Greek.png" 
                   alt="Greek Flag"
-                  style={{ 
-                    width: 20, 
-                    height: 20, 
-                    marginRight: 8,
-                    borderRadius: '2px'
-                  }} 
+                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px' }} 
                 />
                 Ελληνικά
               </MenuItem>
@@ -229,13 +207,7 @@ function Navbar() {
                 <img 
                   src="/src/assets/English.png" 
                   alt="English Flag"
-                  style={{ 
-                    width: 20, 
-                    height: 20, 
-                    marginRight: 8,
-                    borderRadius: '2px',
-                    transform: 'scale(1.4)'
-                  }} 
+                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px', transform: 'scale(1.4)' }} 
                 />
                 English
               </MenuItem>
