@@ -3,7 +3,8 @@ import Navbar from "./Navbar";
 import { Box, Typography, Card, CardMedia, Button, Modal, IconButton } from '@mui/material';
 import { useState, useRef } from 'react';
 import { Close, NavigateBefore, NavigateNext } from '@mui/icons-material';
-import '/src/components/Home.css';
+import './Shared.css';
+import './Projects.css';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 

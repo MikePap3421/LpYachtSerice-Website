@@ -2,10 +2,12 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Helmet } from 'react-helmet-async';
 import { Typography, Card, CardContent, Chip, Button } from '@mui/material';
-import { Build, ElectricalServices, Handyman, CleaningServices, Engineering, Support } from '@mui/icons-material';
+import { Build, ElectricalServices, Handyman, PrecisionManufacturing, Engineering, Support } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
+import './Shared.css';
+import './Services.css';
 
 function Services() {
   const { t } = useTranslation();
@@ -29,7 +31,7 @@ function Services() {
     { icon: <Engineering />, title: 'conversions', features: 4 },
     { icon: <ElectricalServices />, title: 'electrical', features: 4 },
     { icon: <Handyman />, title: 'maintenance', features: 4 },
-    { icon: <CleaningServices />, title: 'cleaning', features: 4 },
+    { icon: <PrecisionManufacturing />, title: 'auxiliary', features: 4 },
     { icon: <Support />, title: 'consulting', features: 4 }
   ];
 

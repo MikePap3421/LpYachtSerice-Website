@@ -1,7 +1,7 @@
-import '/src/components/Home.css';
+import './Shared.css';
 import { Phone, Mail, WhatsApp } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
-import viberIcon from '/src/assets/viber.png';
+import viberIcon from '../assets/viber.png';
 
 function Footer() {
   const { t } = useTranslation();

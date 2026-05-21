@@ -1,4 +1,5 @@
-import '/src/components/Home.css';
+import './Shared.css';
+import './Home.css';
 import Navbar from './Navbar';
 import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import Footer from './Footer';
@@ -95,8 +96,7 @@ function Home() {
                 {[
                   t('home_about_bullet1'),
                   t('home_about_bullet2'),
-                  t('home_about_bullet3'),
-                  t('home_about_bullet4')
+                  t('home_about_bullet3')
                 ].map((item, index) => (
                   <Box key={index} className="list-item">
                     <CheckCircle className="check-icon" />

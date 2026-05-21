@@ -2,7 +2,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Box, TextField, Button, Typography, Card, CardContent, Alert, Snackbar } from '@mui/material';
 import { useState } from 'react';
-import '/src/components/Home.css';
+import './Shared.css';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';

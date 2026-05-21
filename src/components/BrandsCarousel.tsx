@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import '/src/components/Home.css';
+import './Shared.css';
 
 const brands = [
   { name: 'Yanmar', logo: '/brands/yanmar.png' },

@@ -11,6 +11,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TemporaryDrawer from "./Drawer";
 import { useTranslation } from 'react-i18next';
 import { Menu, MenuItem } from '@mui/material';
+import mainLogo from '../assets/mainlogo.png';
+import greekFlag from '../assets/Greek.png';
+import englishFlag from '../assets/English.png';
 
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -23,6 +26,9 @@ function Navbar() {
 
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
+  const scrollToPageStart = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
     setLanguageMenuAnchor(event.currentTarget);
@@ -38,7 +44,7 @@ function Navbar() {
   };
 
   const getCurrentLanguageIcon = () => {
-    return i18n.language === 'el' ? "/src/assets/Greek.png" : "/src/assets/English.png";
+    return i18n.language === 'el' ? greekFlag : englishFlag;
   };
 
   // Helper function to check if a link is active
@@ -106,6 +112,7 @@ function Navbar() {
               variant="h6"
               component={Link}
               to="/"
+              onClick={scrollToPageStart}
               sx={{
                 fontWeight: 700,
                 letterSpacing: ".1rem",
@@ -117,7 +124,7 @@ function Navbar() {
             >
               <Box sx={{ width: 80, margin: 2 }}>
                 <img
-                  src="/src/assets/mainlogo.png"
+                  src={mainLogo}
                   alt="LP Yacht Service"
                   style={{ width: "100%" }}
                 />
@@ -136,7 +143,7 @@ function Navbar() {
                   key={item.label}
                   component={Link}
                   to={item.path}
-                  onClick={handleDrawerClose}
+                  onClick={scrollToPageStart}
                   sx={{
                     fontWeight: isActive(item.path) ? 700 : 550, // Bold if active
                     fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
@@ -197,7 +204,7 @@ function Navbar() {
             >
               <MenuItem onClick={() => changeLanguage('el')}>
                 <img 
-                  src="/src/assets/Greek.png" 
+                  src={greekFlag} 
                   alt="Greek Flag"
                   style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px' }} 
                 />
@@ -205,7 +212,7 @@ function Navbar() {
               </MenuItem>
               <MenuItem onClick={() => changeLanguage('en')}>
                 <img 
-                  src="/src/assets/English.png" 
+                  src={englishFlag} 
                   alt="English Flag"
                   style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px', transform: 'scale(1.4)' }} 
                 />

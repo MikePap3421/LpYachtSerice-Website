@@ -1,0 +1,213 @@
+/* ==========================================================================
+   SERVICES PAGE STYLES
+   ========================================================================== */
+
+/* --- Hero Section --- */
+.services-hero-section {
+  text-align: center;
+  padding: 3rem 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-subtitle {
+  color: #555;
+  max-width: 800px;
+  margin: 0.5rem auto 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+
+/* --- DESKTOP GRID LAYOUT (PC VERSION) --- */
+@media (min-width: 900px) {
+  .services-slider {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    overflow-x: visible !important;
+    padding: 10px 1rem !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+
+  .services-slider .service-card-enhanced {
+    height: 100% !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+  }
+
+  .services-slider .service-card-enhanced:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(39, 70, 136, 0.15) !important;
+  }
+
+  .services-slider .service-card-enhanced::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #274688;
+    transform: scaleX(0); 
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  .services-slider .service-card-enhanced:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* --- Service Card Internals (Compact & Centered) --- */
+.service-card-content {
+  padding: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.service-icon-wrapper {
+  color: #274688;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.service-icon-wrapper svg {
+  font-size: 2.5rem !important;
+}
+
+.service-title-text {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #274688;
+  margin-bottom: 0.5rem !important;
+}
+
+.service-description-text {
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  color: #555;
+  margin-bottom: 1rem !important;
+  flex-grow: 1;
+}
+
+/* --- Features & Chips --- */
+.service-features-area {
+  padding-top: 0.75rem;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.includes-text {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #999;
+  margin-bottom: 0.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.service-chip {
+  background-color: #f0f4ff !important;
+  color: #274688 !important;
+  border: 1px solid #e0e9ff !important;
+  height: 24px !important; 
+  font-size: 0.75rem !important; 
+}
+
+.service-chip .MuiChip-label {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+/* --- Projects Teaser Section --- */
+.projects-teaser-section {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 2rem;
+}
+
+.teaser-title {
+  color: #274688;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.teaser-subtitle {
+  color: #666;
+  font-size: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.teaser-card {
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  height: 220px;
+}
+
+.teaser-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.teaser-card:hover .teaser-img {
+  transform: scale(1.05);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 899px) {
+  .services-slider {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    margin-top: 2rem;
+    padding: 0 7.5% 20px 7.5% !important; 
+    gap: 24px !important;
+  }
+
+  .services-slider .service-card-enhanced {
+    flex: 0 0 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center;
+  }
+
+  .teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .teaser-grid {
+    grid-template-columns: 1fr;
+  }
+}

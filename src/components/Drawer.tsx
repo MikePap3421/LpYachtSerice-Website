@@ -14,6 +14,8 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import greekFlag from '../assets/Greek.png';
+import englishFlag from '../assets/English.png';
 
 interface TemporaryDrawerProps {
   open: boolean;
@@ -35,6 +37,11 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({
     setLanguageMenuAnchor(null);
   };
 
+  const handleRouteClick = () => {
+    onClose();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     handleLanguageClose();
@@ -43,9 +50,9 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({
   const getCurrentLanguageIcon = () => {
     const currentLanguage = i18n.language;
     if (currentLanguage === 'el') {
-      return "/src/assets/Greek.png";
+      return greekFlag;
     } else {
-      return "/src/assets/English.png";
+      return englishFlag;
     }
   };
 
@@ -86,7 +93,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({
               <ListItemButton
                 component={Link}
                 to={page.route}
-                onClick={onClose}
+                onClick={handleRouteClick}
                 sx={{
                   "&:hover": {
                     backgroundColor: "rgba(255,255,255,0.1)",
@@ -171,7 +178,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({
             }}
           >
             <img 
-              src="/src/assets/Greek.png" 
+              src={greekFlag} 
               alt="Greek Flag"
               style={{ 
                 width: 20, 
@@ -192,7 +199,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({
             }}
           >
             <img 
-              src="/src/assets/English.png" 
+              src={englishFlag} 
               alt="English Flag"
               style={{ 
                 width: 20, 

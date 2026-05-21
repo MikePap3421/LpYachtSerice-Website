@@ -1,25 +1,28 @@
 import './App.css'
-import Home from './components/Home'
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from "react-router-dom";
-import Services from './components/Services';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
 import ScrollToTop from './components/ScrollToTop';
-import NotFound from './components/NotFound';
 
+const Home = lazy(() => import('./components/Home'));
+const Services = lazy(() => import('./components/Services'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const NotFound = lazy(() => import('./components/NotFound'));
 
 function App() {
 
   return (<>
       <ScrollToTop /> 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   )
 }
