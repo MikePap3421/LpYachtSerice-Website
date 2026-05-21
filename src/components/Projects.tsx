@@ -28,7 +28,8 @@ function Projects() {
       const container = scrollContainerRef.current;
       const firstCard = container.querySelector('.gallery-card-item') as HTMLElement;
       if (firstCard) {
-        const totalStep = firstCard.offsetWidth + 24;
+        const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
+        const totalStep = firstCard.offsetWidth + gap;
         const newIndex = Math.round(container.scrollLeft / totalStep);
         setActiveProjectIndex(newIndex);
       }

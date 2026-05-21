@@ -207,7 +207,78 @@
 }
 
 @media (max-width: 600px) {
+  .services-hero-section {
+    padding: 2rem 1rem 0.75rem;
+  }
+
+  .services-main-title {
+    font-size: 1.45rem !important;
+  }
+
+  .services-subtitle {
+    font-size: 0.84rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .services-slider {
+    padding: 0 8% 16px 8% !important;
+    gap: 18px !important;
+    margin-top: 1.2rem;
+  }
+
+  .services-slider .service-card-enhanced {
+    flex-basis: 84% !important;
+    max-width: 84% !important;
+  }
+
+  .service-card-content {
+    padding: 1rem !important;
+  }
+
+  .service-icon-wrapper {
+    margin-bottom: 0.5rem;
+  }
+
+  .service-icon-wrapper svg {
+    font-size: 2rem !important;
+  }
+
+  .service-title-text {
+    font-size: 0.98rem !important;
+  }
+
+  .service-description-text {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .service-chip {
+    font-size: 0.64rem !important;
+    height: 22px !important;
+  }
+
+  .projects-teaser-section {
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+  }
+
+  .teaser-title {
+    font-size: 1.32rem !important;
+  }
+
+  .teaser-subtitle {
+    font-size: 0.82rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
   .teaser-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-card-enhanced,
+  .teaser-card {
+    animation: mobileFadeUp 0.45s ease both;
   }
 }

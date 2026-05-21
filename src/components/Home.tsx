@@ -16,6 +16,7 @@ function Home() {
   // Logic for TikTok-style dots
   const whyScrollRef = useRef<HTMLDivElement>(null);
   const [activeWhyIndex, setActiveWhyIndex] = useState(0);
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 
   // Logic to calculate which card is in view for the dots
   const handleWhyScroll = () => {
@@ -25,7 +26,7 @@ function Home() {
       
       if (firstCard) {
         const cardWidth = firstCard.offsetWidth;
-        const gap = 24; 
+        const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
         const totalStep = cardWidth + gap;
 
         const scrollPosition = container.scrollLeft;
@@ -88,24 +89,35 @@ function Home() {
               <Typography variant="h5" className="info-card-title">
                 {t('home_about_our_story_title')}
               </Typography>
-              <Typography variant="body1" className="info-card-description">
-                {t('home_about_our_story_description')}
-              </Typography>
-              
-              <Box className="info-card-list">
-                {[
-                  t('home_about_bullet1'),
-                  t('home_about_bullet2'),
-                  t('home_about_bullet3')
-                ].map((item, index) => (
-                  <Box key={index} className="list-item">
-                    <CheckCircle className="check-icon" />
-                    <Typography variant="body2" className="list-text">
-                      {item}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
+              <div className={`about-mobile-collapsible ${isAboutExpanded ? 'is-expanded' : ''}`}>
+                <Typography variant="body1" className="info-card-description">
+                  {t('home_about_our_story_description')}
+                </Typography>
+                
+                <Box className="info-card-list">
+                  {[
+                    t('home_about_bullet1'),
+                    t('home_about_bullet2'),
+                    t('home_about_bullet3')
+                  ].map((item, index) => (
+                    <Box key={index} className="list-item">
+                      <CheckCircle className="check-icon" />
+                      <Typography variant="body2" className="list-text">
+                        {item}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </div>
+
+              <Button
+                type="button"
+                className="about-read-more-button"
+                aria-expanded={isAboutExpanded}
+                onClick={() => setIsAboutExpanded((current) => !current)}
+              >
+                {isAboutExpanded ? t('home_about_read_less') : t('home_about_read_more')}
+              </Button>
             </CardContent>
           </Card>
 

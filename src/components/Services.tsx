@@ -19,7 +19,8 @@ function Services() {
       const container = serviceScrollRef.current;
       const firstCard = container.querySelector('.service-card-enhanced') as HTMLElement;
       if (firstCard) {
-        const totalStep = firstCard.offsetWidth + 24;
+        const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
+        const totalStep = firstCard.offsetWidth + gap;
         const newIndex = Math.round(container.scrollLeft / totalStep);
         setActiveServiceIndex(newIndex);
       }

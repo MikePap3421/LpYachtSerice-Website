@@ -153,7 +153,7 @@ function Contact() {
       
       {/* Contact Form Section */}
       <section className="contact-section">
-        <Box sx={{ maxWidth: 800, margin: '0 auto', padding: '2rem 2rem 2rem' }}>
+        <Box sx={{ maxWidth: 800, margin: '0 auto', padding: { xs: '1.5rem 1rem', md: '2rem 2rem 2rem' } }}>
           <Typography 
             variant="h2" 
             component="h1" 
@@ -161,8 +161,9 @@ function Contact() {
               textAlign: 'center', 
               color: '#274688',
               fontWeight: 700,
-              marginBottom: '1rem',
-              fontSize: { xs: '2.5rem', md: '3.5rem'  }
+              marginBottom: { xs: '0.5rem', md: '1rem' },
+              fontSize: { xs: '1.5rem', md: '3.5rem'  },
+              lineHeight: { xs: 1.15, md: 1.2 }
             }}
           >
             {t('contact_hero_title')}
@@ -173,8 +174,10 @@ function Contact() {
             sx={{ 
               textAlign: 'center', 
               color: '#1B263B',
-              marginBottom: '3rem',
-              opacity: 0.8
+              marginBottom: { xs: '1.5rem', md: '3rem' },
+              opacity: 0.8,
+              fontSize: { xs: '0.86rem', md: '1.25rem' },
+              lineHeight: { xs: 1.45, md: 1.6 }
             }}
           >
             {t('contact_hero_subtitle')}
@@ -184,15 +187,15 @@ function Contact() {
             sx={{ 
               borderRadius: 3, 
               boxShadow: '0 10px 30px rgba(39, 70, 136, 0.1)',
-              padding: { xs: '2rem', md: '3rem' }
+              padding: { xs: '1rem', md: '3rem' }
             }}
           >
             <CardContent>
               <form onSubmit={handleSubmit} noValidate>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
                   
                   {/* Name and Email Row */}
-                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 3 } }}>
                     <TextField
                       fullWidth
                       label={t('contact_name_label')}
@@ -231,7 +234,7 @@ function Contact() {
                   </Box>
 
                   {/* Phone and Subject Row */}
-                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 3 } }}>
                     <TextField
                       fullWidth
                       label={t('contact_phone_label')}
@@ -270,7 +273,7 @@ function Contact() {
                     multiline
                     rows={6}
                     variant="outlined"
-                    sx={{ marginBottom: 2 }}
+                    sx={{ marginBottom: { xs: 1, md: 2 } }}
                     disabled={isSubmitting}
                     error={!!fieldErrors.message}
                     helperText={fieldErrors.message}
@@ -291,8 +294,8 @@ function Contact() {
                     sx={{
                       backgroundColor: isSubmitting ? '#cccccc' : '#274688',
                       color: 'white',
-                      padding: '12px 40px',
-                      fontSize: '1.1rem',
+                      padding: { xs: '10px 24px', md: '12px 40px' },
+                      fontSize: { xs: '0.88rem', md: '1.1rem' },
                       fontWeight: 600,
                       borderRadius: 2,
                       '&:hover': {
@@ -302,7 +305,7 @@ function Contact() {
                       },
                       transition: 'all 0.3s ease',
                       alignSelf: 'center',
-                      minWidth: 200
+                      minWidth: { xs: 160, md: 200 }
                     }}
                   >
                     {isSubmitting ? t('contact_sending') : t('contact_submit_button')}

@@ -24,6 +24,8 @@ const resources = {
       home_about_bullet1: "Specialized technical staff",
       home_about_bullet2: "Quality materials and services",
       home_about_bullet3: "Fast and reliable service",
+      home_about_read_more: "Read more",
+      home_about_read_less: "Show less",
       home_about_image_alt: "LP Yacht Service Car",
       
       home_why_choose_us_title: "Why Choose Us",
@@ -158,6 +160,8 @@ const resources = {
       home_about_bullet1: "Εξειδικευμένο τεχνικό προσωπικό",
       home_about_bullet2: "Ποιότητα υλικών και υπηρεσιών",
       home_about_bullet3: "Γρήγορη και αξιόπιστη εξυπηρέτηση",
+      home_about_read_more: "Διαβάστε περισσότερα",
+      home_about_read_less: "Λιγότερα",
       home_about_image_alt: "LP Yacht Service Αυτοκίνητο",
       
       home_why_choose_us_title: "Γιατί να μας Επιλέξετε",

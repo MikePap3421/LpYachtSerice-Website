@@ -174,6 +174,10 @@
   line-height: 1.7 !important;
 }
 
+.about-read-more-button {
+  display: none !important;
+}
+
 .info-card-list {
   margin-top: 16px;
 }
@@ -370,12 +374,179 @@
   }
 }
 
+@media (max-width: 600px) {
+  .home-container {
+    height: 68vh;
+    min-height: 460px;
+  }
+
+  .hero-text {
+    padding: 0 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.6rem !important;
+  }
+
+  .hero-button {
+    padding: 10px 24px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .about-section {
+    padding: 1rem 2.45rem;
+    margin: 1.75rem auto;
+  }
+
+  .about-title,
+  .why-title {
+    font-size: 1.42rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .cards-section {
+    gap: 1rem;
+    margin: 2rem auto;
+    padding: 0;
+  }
+
+  .info-card {
+    padding: 1rem !important;
+  }
+
+  .info-card-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .info-card-description {
+    font-size: 0.84rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .about-mobile-collapsible {
+    position: relative;
+    max-height: 8.4rem;
+    overflow: hidden;
+    transition: max-height 0.55s ease;
+  }
+
+  .about-mobile-collapsible::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3.4rem;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.082),
+      rgba(255, 255, 255, 0.603) 45%,
+      #fffffff8 100%
+    );
+    backdrop-filter: blur(1.2px);
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  .about-mobile-collapsible.is-expanded {
+    max-height: 60rem;
+  }
+
+  .about-mobile-collapsible.is-expanded::after {
+    opacity: 0;
+  }
+
+  .about-read-more-button {
+    display: inline-flex !important;
+    margin-top: 0.7rem !important;
+    color: #274688 !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    padding: 6px 14px !important;
+    border-radius: 999px !important;
+    background-color: rgba(39, 70, 136, 0.08) !important;
+    transition: transform 0.25s ease, background-color 0.25s ease !important;
+  }
+
+  .about-read-more-button:active {
+    transform: scale(0.97);
+    background-color: rgba(39, 70, 136, 0.14) !important;
+  }
+
+  .why-choose-us-section {
+    padding: 1.25rem 0;
+    margin: 1rem auto;
+  }
+
+  .why-cards {
+    padding: 0 8% 16px 8% !important;
+    gap: 18px !important;
+    margin-top: 1rem !important;
+  }
+
+  .why-card {
+    flex-basis: 84% !important;
+    min-width: 84% !important;
+    max-width: 84% !important;
+    padding: 1rem !important;
+  }
+
+  .why-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .why-card p {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .home-cta {
+    padding: 2rem 0;
+  }
+
+  .cta-container {
+    padding: 1.75rem 1rem;
+  }
+
+  .cta-title {
+    font-size: 1.32rem !important;
+  }
+
+  .cta-subtitle {
+    font-size: 0.84rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .cta-button {
+    padding: 10px 24px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .info-card,
+  .info-card-img,
+  .why-card {
+    animation: mobileFadeUp 0.45s ease both;
+  }
+}
+
 /* =========================================
    4. CALL TO ACTION (CTA)
    ========================================= */
 .home-cta {
   background-color: #f2f2f3ff;
-  padding: 4rem 0;
+  padding: 3rem 0;
   margin: 0;
 }
 
