@@ -134,7 +134,7 @@ const resources = {
       viber_default_message: "Hello! I would like to get more information about your services.",
 
       // Cookie Banner
-      cookie_banner_text: "This website uses only essential cookies for the contact form. We also use Vercel Analytics for anonymous traffic insights — no personal data, no tracking cookies. For more information see our",
+      cookie_banner_text: "This website uses only essential cookies for the contact form. We also use Vercel Analytics and Speed Insights for anonymous traffic and performance data — no personal data, no tracking cookies. For more information see our",
       cookie_banner_link: "Privacy Policy",
       cookie_banner_button: "Got it",
 
@@ -148,7 +148,7 @@ const resources = {
       privacy_s1_content: "LP Yacht Service is a family business based in Preveza, Greece, providing yacht maintenance and repair services.\n\nData Controller: LP Yacht Service (Lampros Papageorgiou)\nEmail: lpyachtservice@gmail.com\nLocation: Preveza, Greece",
 
       privacy_s2_title: "What Data We Collect",
-      privacy_s2_content: "When you submit our contact form, we collect the following information:\n\n• Full name (required)\n• Email address (required)\n• Phone number (optional)\n• Message subject (required)\n• Message content (required)\n\nIn addition, we use Vercel Analytics to understand how visitors use our website. This service collects anonymous, aggregated data only (page views, referrers, device types) — no personal data, no cookies, no fingerprinting. It is GDPR-compliant by design.",
+      privacy_s2_content: "When you submit our contact form, we collect the following information:\n\n• Full name (required)\n• Email address (required)\n• Phone number (optional)\n• Message subject (required)\n• Message content (required)\n\nIn addition, we use Vercel Analytics and Vercel Speed Insights to understand how visitors use our website and to monitor real-user performance. These services collect anonymous, aggregated data only (page views, referrers, device types, load times, Core Web Vitals) — no personal data, no cookies, no fingerprinting. Both are GDPR-compliant by design.",
 
       privacy_s3_title: "Why We Collect It",
       privacy_s3_content: "We collect this data solely to respond to your inquiry, provide a quote or technical advice, and conduct any resulting business correspondence.\n\nLegal basis: Legitimate interest under Article 6(1)(f) GDPR — responding to business inquiries you have initiated.",
@@ -160,7 +160,7 @@ const resources = {
       privacy_s5_content: "We retain your message for as long as necessary to respond to your inquiry and any resulting business relationship — typically up to 2 years. After that period, messages are deleted.",
 
       privacy_s6_title: "Cookies",
-      privacy_s6_content: "This website uses only essential technical cookies required for the contact form and basic site functionality. We do not use tracking or advertising cookies.\n\nWe use Vercel Analytics for anonymous, aggregated traffic insights. Vercel Analytics does not use cookies and does not collect personal data. No cookie consent is required for this service under GDPR.\n\nVercel Privacy Policy: https://vercel.com/legal/privacy-policy",
+      privacy_s6_content: "This website uses only essential technical cookies required for the contact form and basic site functionality. We do not use tracking or advertising cookies.\n\nWe use Vercel Analytics and Vercel Speed Insights for anonymous, aggregated traffic and performance insights. Neither service uses cookies or collects personal data. No cookie consent is required for these services under GDPR.\n\nVercel Privacy Policy: https://vercel.com/legal/privacy-policy",
 
       privacy_s7_title: "Your Rights",
       privacy_s7_content: "Under GDPR you have the following rights regarding your personal data:\n\n• Right of access — request a copy of your data\n• Right to rectification — correct inaccurate data\n• Right to erasure — request deletion of your data\n• Right to restriction — limit how we use your data\n• Right to object — object to processing based on legitimate interest\n• Right to portability — receive your data in a portable format\n\nTo exercise any of these rights, contact us at lpyachtservice@gmail.com. We will respond within 30 days.",
@@ -304,7 +304,7 @@ const resources = {
       viber_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
 
       // Cookie Banner
-      cookie_banner_text: "Αυτός ο ιστότοπος χρησιμοποιεί μόνο απαραίτητα cookies για τη φόρμα επικοινωνίας. Χρησιμοποιούμε επίσης το Vercel Analytics για ανώνυμες πληροφορίες επισκεψιμότητας — χωρίς προσωπικά δεδομένα, χωρίς cookies παρακολούθησης. Για περισσότερες πληροφορίες δείτε την",
+      cookie_banner_text: "Αυτός ο ιστότοπος χρησιμοποιεί μόνο απαραίτητα cookies για τη φόρμα επικοινωνίας. Χρησιμοποιούμε επίσης το Vercel Analytics και Speed Insights για ανώνυμα δεδομένα επισκεψιμότητας και απόδοσης — χωρίς προσωπικά δεδομένα, χωρίς cookies παρακολούθησης. Για περισσότερες πληροφορίες δείτε την",
       cookie_banner_link: "Πολιτική Απορρήτου",
       cookie_banner_button: "Το κατάλαβα",
 
@@ -318,7 +318,7 @@ const resources = {
       privacy_s1_content: "Η LP Yacht Service είναι οικογενειακή επιχείρηση με έδρα την Πρέβεζα, παρέχοντας υπηρεσίες συντήρησης και επισκευής σκαφών.\n\nΥπεύθυνος Επεξεργασίας: LP Yacht Service (Λάμπρος Παπαγεωργίου)\nEmail: lpyachtservice@gmail.com\nΤοποθεσία: Πρέβεζα, Ελλάδα",
 
       privacy_s2_title: "Ποια Δεδομένα Συλλέγουμε",
-      privacy_s2_content: "Όταν υποβάλλετε τη φόρμα επικοινωνίας μας, συλλέγουμε τα εξής:\n\n• Ονοματεπώνυμο (υποχρεωτικό)\n• Διεύθυνση email (υποχρεωτικό)\n• Αριθμός τηλεφώνου (προαιρετικό)\n• Θέμα μηνύματος (υποχρεωτικό)\n• Περιεχόμενο μηνύματος (υποχρεωτικό)\n\nΕπιπλέον, χρησιμοποιούμε το Vercel Analytics για να κατανοούμε πώς οι επισκέπτες χρησιμοποιούν τον ιστότοπό μας. Η υπηρεσία αυτή συλλέγει μόνο ανώνυμα, συγκεντρωτικά δεδομένα (προβολές σελίδων, πηγές επισκεψιμότητας, τύποι συσκευών) — χωρίς προσωπικά δεδομένα, χωρίς cookies, χωρίς fingerprinting. Είναι σχεδιασμένο για συμμόρφωση με τον GDPR.",
+      privacy_s2_content: "Όταν υποβάλλετε τη φόρμα επικοινωνίας μας, συλλέγουμε τα εξής:\n\n• Ονοματεπώνυμο (υποχρεωτικό)\n• Διεύθυνση email (υποχρεωτικό)\n• Αριθμός τηλεφώνου (προαιρετικό)\n• Θέμα μηνύματος (υποχρεωτικό)\n• Περιεχόμενο μηνύματος (υποχρεωτικό)\n\nΕπιπλέον, χρησιμοποιούμε το Vercel Analytics και το Vercel Speed Insights για να κατανοούμε πώς οι επισκέπτες χρησιμοποιούν τον ιστότοπό μας και να παρακολουθούμε την απόδοση σε πραγματικές συνθήκες. Οι υπηρεσίες αυτές συλλέγουν μόνο ανώνυμα, συγκεντρωτικά δεδομένα (προβολές σελίδων, πηγές επισκεψιμότητας, τύποι συσκευών, χρόνοι φόρτωσης, Core Web Vitals) — χωρίς προσωπικά δεδομένα, χωρίς cookies, χωρίς fingerprinting. Και οι δύο είναι σχεδιασμένες για συμμόρφωση με τον GDPR.",
 
       privacy_s3_title: "Γιατί τα Συλλέγουμε",
       privacy_s3_content: "Συλλέγουμε αυτά τα δεδομένα αποκλειστικά για να απαντήσουμε στο αίτημά σας, να σας παρέχουμε προσφορά ή τεχνική συμβουλή και να διεξάγουμε την επακόλουθη επαγγελματική αλληλογραφία.\n\nΝομική βάση: Έννομο συμφέρον βάσει Άρθρου 6(1)(στ) GDPR — ανταπόκριση σε επαγγελματικά αιτήματα που εσείς έχετε ξεκινήσει.",
@@ -330,7 +330,7 @@ const resources = {
       privacy_s5_content: "Διατηρούμε το μήνυμά σας για όσο χρόνο είναι απαραίτητο για να ανταποκριθούμε στο αίτημά σας και σε οποιαδήποτε επακόλουθη επαγγελματική σχέση — συνήθως έως 2 χρόνια. Μετά από αυτή την περίοδο, τα μηνύματα διαγράφονται.",
 
       privacy_s6_title: "Cookies",
-      privacy_s6_content: "Αυτός ο ιστότοπος χρησιμοποιεί μόνο απαραίτητα τεχνικά cookies για τη φόρμα επικοινωνίας και τη βασική λειτουργία. Δεν χρησιμοποιούμε cookies παρακολούθησης ή διαφήμισης.\n\nΧρησιμοποιούμε το Vercel Analytics για ανώνυμες, συγκεντρωτικές πληροφορίες επισκεψιμότητας. Το Vercel Analytics δεν χρησιμοποιεί cookies και δεν συλλέγει προσωπικά δεδομένα. Δεν απαιτείται συναίνεση για αυτή την υπηρεσία βάσει GDPR.\n\nΠολιτική Απορρήτου Vercel: https://vercel.com/legal/privacy-policy",
+      privacy_s6_content: "Αυτός ο ιστότοπος χρησιμοποιεί μόνο απαραίτητα τεχνικά cookies για τη φόρμα επικοινωνίας και τη βασική λειτουργία. Δεν χρησιμοποιούμε cookies παρακολούθησης ή διαφήμισης.\n\nΧρησιμοποιούμε το Vercel Analytics και το Vercel Speed Insights για ανώνυμες, συγκεντρωτικές πληροφορίες επισκεψιμότητας και απόδοσης. Καμία από τις υπηρεσίες αυτές δεν χρησιμοποιεί cookies ή συλλέγει προσωπικά δεδομένα. Δεν απαιτείται συναίνεση για αυτές τις υπηρεσίες βάσει GDPR.\n\nΠολιτική Απορρήτου Vercel: https://vercel.com/legal/privacy-policy",
 
       privacy_s7_title: "Τα Δικαιώματά σας",
       privacy_s7_content: "Βάσει GDPR έχετε τα εξής δικαιώματα σχετικά με τα προσωπικά σας δεδομένα:\n\n• Δικαίωμα πρόσβασης — αίτηση αντιγράφου των δεδομένων σας\n• Δικαίωμα διόρθωσης — διόρθωση ανακριβών δεδομένων\n• Δικαίωμα διαγραφής — αίτηση διαγραφής των δεδομένων σας\n• Δικαίωμα περιορισμού — περιορισμός της χρήσης των δεδομένων σας\n• Δικαίωμα εναντίωσης — εναντίωση στην επεξεργασία βάσει εννόμου συμφέροντος\n• Δικαίωμα φορητότητας — λήψη των δεδομένων σας σε φορητή μορφή\n\nΓια την άσκηση οποιουδήποτε από αυτά τα δικαιώματα, επικοινωνήστε μαζί μας στο lpyachtservice@gmail.com. Θα απαντήσουμε εντός 30 ημερών.",

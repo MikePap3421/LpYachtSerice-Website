@@ -10,6 +10,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from './components/ErrorBoundary';
 import { inject } from '@vercel/analytics';
 inject();
+import { injectSpeedInsights } from '@vercel/speed-insights';
+injectSpeedInsights();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
