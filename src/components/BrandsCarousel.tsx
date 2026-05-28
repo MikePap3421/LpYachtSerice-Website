@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import './Shared.css';
 
 const brands = [
@@ -9,31 +8,26 @@ const brands = [
   { name: 'Perkins', logo: '/brands/perkins.png' }
 ];
 
+const loopedBrands = [...brands, ...brands];
+
 function BrandsCarousel() {
-
-
   return (
     <section className="brands-section">
-      <Box sx={{ maxWidth: 1600, margin: '0 auto' }}>
-        <Box sx={{ position: 'relative', overflow: 'hidden' }}>
-          <Box className="brands-scroll-container">
-            <Box className="brands-scroll-track">
-              {[...brands, ...brands,...brands, ...brands].map((brand, index) => (
-                <Box
-                  key={`brand-${index}`}
-                  className="brand-logo-item"
-                >
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="brand-logo-only"
-                  />
-                </Box>
-              ))}
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+      {/* No max-width wrapper — carousel runs edge to edge */}
+      <div className="brands-scroll-container">
+        <div className="brands-scroll-track">
+          {loopedBrands.map((brand, index) => (
+            <div key={`brand-${index}`} className="brand-logo-item">
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="brand-logo-only"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

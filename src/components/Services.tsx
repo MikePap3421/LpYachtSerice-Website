@@ -8,11 +8,17 @@ import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
 import './Shared.css';
 import './Services.css';
+import { useScrollReveal } from './useScrollReveal';
 
 function Services() {
   const { t } = useTranslation();
   const serviceScrollRef = useRef<HTMLDivElement>(null);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+
+  // Scroll reveal
+  const { ref: heroRef,     isVisible: heroVisible }     = useScrollReveal<HTMLElement>();
+  const { ref: servicesRef, isVisible: servicesVisible } = useScrollReveal<HTMLElement>();
+  const { ref: teaserRef,   isVisible: teaserVisible }   = useScrollReveal<HTMLElement>();
 
   const handleServiceScroll = () => {
     if (serviceScrollRef.current) {
@@ -40,15 +46,23 @@ function Services() {
     <div className="page-bg">
       <Helmet>
         <title>LP Yacht Service | {t('nav.services')}</title>
+        <meta name="description" content={t('services_hero_subtitle')} />
+        <link rel="canonical" href="https://lpyachtservice.com/services" />
       </Helmet>
       <Navbar />
-      
-      <section className="services-hero-section">
+
+      <section
+        ref={heroRef}
+        className={`services-hero-section reveal ${heroVisible ? 'is-visible' : ''}`}
+      >
         <Typography variant="h2" className="services-main-title">{t('services_hero_title')}</Typography>
         <Typography variant="h5" className="services-subtitle">{t('services_hero_subtitle')}</Typography>
       </section>
 
-      <section className="services-grid-container">
+      <section
+        ref={servicesRef}
+        className={`services-section-container reveal ${servicesVisible ? 'is-visible' : ''}`}
+      >
         <div className="services-slider" ref={serviceScrollRef} onScroll={handleServiceScroll}>
           {services.map((service, index) => (
             <Card key={index} className="service-card-enhanced">
@@ -56,7 +70,7 @@ function Services() {
                 <div className="service-icon-wrapper">{service.icon}</div>
                 <Typography variant="h4" className="service-title-text">{t(`services_${service.title}_title`)}</Typography>
                 <Typography variant="body1" className="service-description-text">{t(`services_${service.title}_description`)}</Typography>
-                
+
                 <div className="service-features-area">
                   <Typography variant="h6" className="includes-text">{t('services_includes')}</Typography>
                   <div className="chip-group">
@@ -77,14 +91,22 @@ function Services() {
         </div>
       </section>
 
-      <section className="projects-teaser-section">
+      <section
+        ref={teaserRef}
+        className={`projects-teaser-section reveal ${teaserVisible ? 'is-visible' : ''}`}
+      >
         <Typography variant="h3" className="teaser-title">{t('projects_teaser_title')}</Typography>
         <Typography variant="h6" className="teaser-subtitle">{t('projects_teaser_subtitle')}</Typography>
 
         <div className="teaser-grid">
           {[6, 20, 1, 8].map((num) => (
             <Card key={num} className="teaser-card">
-              <img src={`/gallery/g${num}.jpg`} alt="Teaser" className="teaser-img" />
+              <img
+                src={`/gallery/g${num}.jpg`}
+                alt={t('projects_teaser_image_alt', { number: num })}
+                className="teaser-img"
+                loading="lazy"
+              />
             </Card>
           ))}
         </div>
@@ -93,7 +115,7 @@ function Services() {
           {t('projects_teaser_button')}
         </Button>
       </section>
-      
+
       <Footer />
     </div>
   );

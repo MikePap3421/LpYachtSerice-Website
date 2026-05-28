@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useLocation } from "react-router-dom"; // 1. Import useLocation
+import { Link, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,15 +18,23 @@ import englishFlag from '../assets/English.png';
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [languageMenuAnchor, setLanguageMenuAnchor] = React.useState<null | HTMLElement>(null);
+  const [scrolled, setScrolled] = React.useState(false);
   const { t, i18n } = useTranslation();
-  
-  // 2. Get the current URL path
+
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // Detect scroll to apply shadow only after user scrolls away from top
+  React.useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
-  const scrollToPageStart = () => {
+
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -47,7 +55,6 @@ function Navbar() {
     return i18n.language === 'el' ? greekFlag : englishFlag;
   };
 
-  // Helper function to check if a link is active
   const isActive = (path: string) => {
     if (path === '/' && currentPath === '/') return true;
     if (path !== '/' && currentPath.startsWith(path)) return true;
@@ -60,9 +67,16 @@ function Navbar() {
       color="transparent"
       elevation={0}
       sx={{
-        backdropFilter: "blur(8px)",
-        borderBottom: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 2px 20px rgba(0, 0, 0, 0.1)",
+        // Solid background on all screen sizes — no transparency issues on mobile
+        backgroundColor: "rgba(243, 242, 242, 0.97)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)", // Safari mobile
+        borderBottom: "none",
+        // Shadow fades in smoothly after scrolling 10px — invisible at top of page
+        boxShadow: scrolled
+          ? "0 2px 16px rgba(27, 38, 59, 0.08)"
+          : "none",
+        transition: "box-shadow 0.3s ease",
       }}
     >
       <Container maxWidth="xl">
@@ -112,7 +126,7 @@ function Navbar() {
               variant="h6"
               component={Link}
               to="/"
-              onClick={scrollToPageStart}
+              onClick={scrollToTop}
               sx={{
                 fontWeight: 700,
                 letterSpacing: ".1rem",
@@ -131,7 +145,7 @@ function Navbar() {
               </Box>
             </Typography>
 
-            {/* --- Desktop Navigation Links with Active State --- */}
+            {/* --- Desktop Navigation Links --- */}
             <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
               {[
                 { label: 'home', path: '/' },
@@ -143,11 +157,10 @@ function Navbar() {
                   key={item.label}
                   component={Link}
                   to={item.path}
-                  onClick={scrollToPageStart}
                   sx={{
-                    fontWeight: isActive(item.path) ? 700 : 550, // Bold if active
+                    fontWeight: isActive(item.path) ? 700 : 550,
                     fontSize: i18n.language === 'en' ? '1.4rem' : '1.3rem',
-                    color: isActive(item.path) ? "primary.main" : "inherit", // Blue if active
+                    color: isActive(item.path) ? "primary.main" : "inherit",
                     textTransform: "none",
                     position: 'relative',
                     "&:after": isActive(item.path) ? {
@@ -160,8 +173,8 @@ function Navbar() {
                       backgroundColor: '#274688',
                       borderRadius: '2px'
                     } : {},
-                    "&:hover": { 
-                      color: "primary.main", 
+                    "&:hover": {
+                      color: "primary.main",
                       backgroundColor: "rgba(83, 122, 194, 0.19)"
                     },
                   }}
@@ -174,7 +187,7 @@ function Navbar() {
 
           {/* --- Language Icon (right side) --- */}
           <Box sx={{ right: 16, display: { xs: "none", md: "flex" } }}>
-            <IconButton 
+            <IconButton
               onClick={handleLanguageClick}
               sx={{
                 color: "#1B263B",
@@ -184,11 +197,11 @@ function Navbar() {
                 }
               }}
             >
-              <img 
-                src={getCurrentLanguageIcon()} 
+              <img
+                src={getCurrentLanguageIcon()}
                 alt="Language Flag"
-                style={{ 
-                  width: 24, 
+                style={{
+                  width: 24,
                   height: 24,
                   objectFit: 'cover',
                   borderRadius: '2px',
@@ -203,18 +216,18 @@ function Navbar() {
               onClose={handleLanguageClose}
             >
               <MenuItem onClick={() => changeLanguage('el')}>
-                <img 
-                  src={greekFlag} 
+                <img
+                  src={greekFlag}
                   alt="Greek Flag"
-                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px' }} 
+                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px' }}
                 />
                 Ελληνικά
               </MenuItem>
               <MenuItem onClick={() => changeLanguage('en')}>
-                <img 
-                  src={englishFlag} 
+                <img
+                  src={englishFlag}
                   alt="English Flag"
-                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px', transform: 'scale(1.4)' }} 
+                  style={{ width: 20, height: 20, marginRight: 8, borderRadius: '2px', transform: 'scale(1.4)' }}
                 />
                 English
               </MenuItem>

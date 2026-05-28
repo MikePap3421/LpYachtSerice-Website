@@ -6,15 +6,17 @@ import './Shared.css';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
+import { useScrollReveal } from './useScrollReveal';
 
-// Load credentials from .env file
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function Contact() {
   const { t } = useTranslation();
-  
+
+  const { ref: formRef, isVisible: formVisible } = useScrollReveal<HTMLElement>();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,35 +40,20 @@ function Contact() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (fieldErrors[name as keyof typeof fieldErrors]) {
-      setFieldErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+      setFieldErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
   const validateForm = () => {
-    const errors = {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    };
-
+    const errors = { name: '', email: '', subject: '', message: '' };
     let isValid = true;
 
     if (!formData.name.trim()) {
       errors.name = t('contact_error_name_required', 'Name is required');
       isValid = false;
     }
-
     if (!formData.email.trim()) {
       errors.email = t('contact_error_email_required', 'Email is required');
       isValid = false;
@@ -74,12 +61,10 @@ function Contact() {
       errors.email = t('contact_error_email_invalid', 'Please enter a valid email address');
       isValid = false;
     }
-
     if (!formData.subject.trim()) {
       errors.subject = t('contact_error_subject_required', 'Subject is required');
       isValid = false;
     }
-
     if (!formData.message.trim()) {
       errors.message = t('contact_error_message_required', 'Message is required');
       isValid = false;
@@ -93,50 +78,28 @@ function Contact() {
   };
 
   const showSnackbar = (message: string, severity: 'success' | 'error') => {
-    setSnackbar({
-      open: true,
-      message,
-      severity
-    });
+    setSnackbar({ open: true, message, severity });
   };
 
   const handleCloseSnackbar = () => {
-    setSnackbar(prev => ({
-      ...prev,
-      open: false
-    }));
+    setSnackbar(prev => ({ ...prev, open: false }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-
+    if (!validateForm()) return;
     setIsSubmitting(true);
 
     try {
-      const result = await emailjs.sendForm(
+      await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         e.target as HTMLFormElement,
         EMAILJS_PUBLIC_KEY
       );
-
-      console.log('Email sent successfully:', result.text);
       showSnackbar(t('contact_success_message'), 'success');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Failed to send email:', error);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch {
       showSnackbar(t('contact_error_message'), 'error');
     } finally {
       setIsSubmitting(false);
@@ -148,31 +111,35 @@ function Contact() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.contact')}</title>
         <meta name="description" content={t('contact_hero_subtitle')} />
+        <link rel="canonical" href="https://lpyachtservice.com/contact" />
       </Helmet>
       <Navbar />
-      
-      {/* Contact Form Section */}
+
       <section className="contact-section">
-        <Box sx={{ maxWidth: 800, margin: '0 auto', padding: { xs: '1.5rem 1rem', md: '2rem 2rem 2rem' } }}>
-          <Typography 
-            variant="h2" 
-            component="h1" 
-            sx={{ 
-              textAlign: 'center', 
+        <Box
+          ref={formRef}
+          className={`reveal ${formVisible ? 'is-visible' : ''}`}
+          sx={{ maxWidth: 800, margin: '0 auto', padding: { xs: '1.5rem 1rem', md: '2rem 2rem 2rem' } }}
+        >
+          <Typography
+            variant="h2"
+            component="h1"
+            sx={{
+              textAlign: 'center',
               color: '#274688',
               fontWeight: 700,
               marginBottom: { xs: '0.5rem', md: '1rem' },
-              fontSize: { xs: '1.5rem', md: '3.5rem'  },
+              fontSize: { xs: '1.5rem', md: '3.5rem' },
               lineHeight: { xs: 1.15, md: 1.2 }
             }}
           >
             {t('contact_hero_title')}
           </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              textAlign: 'center', 
+
+          <Typography
+            variant="h6"
+            sx={{
+              textAlign: 'center',
               color: '#1B263B',
               marginBottom: { xs: '1.5rem', md: '3rem' },
               opacity: 0.8,
@@ -183,9 +150,9 @@ function Contact() {
             {t('contact_hero_subtitle')}
           </Typography>
 
-          <Card 
-            sx={{ 
-              borderRadius: 3, 
+          <Card
+            sx={{
+              borderRadius: 3,
               boxShadow: '0 10px 30px rgba(39, 70, 136, 0.1)',
               padding: { xs: '1rem', md: '3rem' }
             }}
@@ -193,8 +160,7 @@ function Contact() {
             <CardContent>
               <form onSubmit={handleSubmit} noValidate>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
-                  
-                  {/* Name and Email Row */}
+
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 3 } }}>
                     <TextField
                       fullWidth
@@ -206,12 +172,7 @@ function Contact() {
                       disabled={isSubmitting}
                       error={!!fieldErrors.name}
                       helperText={fieldErrors.name}
-                      sx={{
-                        '& .MuiFormHelperText-root': {
-                          color: '#d32f2f',
-                          fontWeight: 500
-                        }
-                      }}
+                      sx={{ '& .MuiFormHelperText-root': { color: '#d32f2f', fontWeight: 500 } }}
                     />
                     <TextField
                       fullWidth
@@ -224,16 +185,10 @@ function Contact() {
                       disabled={isSubmitting}
                       error={!!fieldErrors.email}
                       helperText={fieldErrors.email}
-                      sx={{
-                        '& .MuiFormHelperText-root': {
-                          color: '#d32f2f',
-                          fontWeight: 500
-                        }
-                      }}
+                      sx={{ '& .MuiFormHelperText-root': { color: '#d32f2f', fontWeight: 500 } }}
                     />
                   </Box>
 
-                  {/* Phone and Subject Row */}
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 3 } }}>
                     <TextField
                       fullWidth
@@ -254,16 +209,10 @@ function Contact() {
                       disabled={isSubmitting}
                       error={!!fieldErrors.subject}
                       helperText={fieldErrors.subject}
-                      sx={{
-                        '& .MuiFormHelperText-root': {
-                          color: '#d32f2f',
-                          fontWeight: 500
-                        }
-                      }}
+                      sx={{ '& .MuiFormHelperText-root': { color: '#d32f2f', fontWeight: 500 } }}
                     />
                   </Box>
 
-                  {/* Message */}
                   <TextField
                     fullWidth
                     label={t('contact_message_label')}
@@ -278,14 +227,10 @@ function Contact() {
                     error={!!fieldErrors.message}
                     helperText={fieldErrors.message}
                     FormHelperTextProps={{
-                      sx: {
-                        color: '#d32f2f',
-                        fontWeight: 500
-                      }
+                      sx: { color: '#d32f2f', fontWeight: 500 }
                     }}
                   />
 
-                  {/* Submit Button */}
                   <Button
                     type="submit"
                     variant="contained"
@@ -317,26 +262,21 @@ function Contact() {
         </Box>
       </section>
 
-      {/* Snackbar for success/error messages */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert 
-          onClose={handleCloseSnackbar} 
+        <Alert
+          onClose={handleCloseSnackbar}
           severity={snackbar.severity}
-          sx={{ 
-            width: '100%',
-            fontSize: '1rem',
-            fontWeight: 500
-          }}
+          sx={{ width: '100%', fontSize: '1rem', fontWeight: 500 }}
         >
           {snackbar.message}
         </Alert>
       </Snackbar>
-      
+
       <Footer />
     </div>
   );

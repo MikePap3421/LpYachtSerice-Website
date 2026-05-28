@@ -1,6 +1,7 @@
 import './Shared.css';
 import { Phone, Mail, WhatsApp } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import viberIcon from '../assets/viber.png';
 
 function Footer() {
@@ -16,83 +17,93 @@ function Footer() {
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
-  // ✅ Viber opens in blank tab + app detection + download fallback
   const handleViberClick = () => {
-    const phoneNumber = '306945663120';
-    const viberAppLink = `viber://chat?number=${phoneNumber}`;
-    const viberDownloadLink = 'https://www.viber.com/download/';
-
-    const newTab = window.open('', '_blank');
-
-    if (!newTab) return;
-
-    // Try opening Viber app
-    newTab.location.href = viberAppLink;
-
-    // If Viber fails, redirect to download page after 1.2s
-    setTimeout(() => {
-      newTab.location.href = viberDownloadLink;
-    }, 900);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = 'viber://chat?number=306945663120';
+    } else {
+      window.open('https://viber.me/+306945663120', '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* --- Left Section --- */}
+        {/* --- Left: About --- */}
         <div className="footer-about">
           <h3>{t('footer_company_name')}</h3>
           <p>{t('footer_description')}</p>
         </div>
 
-        {/* --- Middle Section --- */}
+        {/* --- Right: Contact with 2-column inner layout --- */}
         <div className="footer-contact">
           <h4>{t('footer_contact_title')}</h4>
-          <ul>
-            <li><Phone className="footer-icon" /> {t('footer_phone')}</li>
-            <li><Mail className="footer-icon" /> {t('footer_email')}</li>
-            <li>{t('footer_location')}</li>
-          </ul>
-        </div>
 
-        {/* --- Right Section --- */}
-        <div className="footer-social">
-          <h4>{t('footer_contact_us')}</h4>
-          <div className="social-icons">
+          <div className="footer-contact-inner">
+            {/* Col 1: details */}
+            <ul>
+              <li>
+                <Phone className="footer-icon" />
+                <a href="tel:+306945663120">{t('footer_phone')}</a>
+              </li>
+              <li>
+                <Mail className="footer-icon" />
+                <a href="mailto:lpyachtservice@gmail.com">{t('footer_email')}</a>
+              </li>
+              <li>{t('footer_location')}</li>
+            </ul>
 
-            <button 
-              onClick={handleWhatsAppClick}
-              className="whatsapp-button"
-              aria-label="WhatsApp"
-            >
-              <WhatsApp sx={{ fontSize: 32 }} />
-              <span className="button-text">
-                {t('footer_whatsapp', 'Chat on WhatsApp')}
-              </span>
-            </button>
+            {/* Col 2: buttons */}
+            <div className="social-icons">
+              <button
+                onClick={handleWhatsAppClick}
+                className="whatsapp-button"
+                aria-label="WhatsApp"
+              >
+                <WhatsApp sx={{ fontSize: 20 }} />
+                <span className="button-text">
+                  {t('footer_whatsapp', 'Chat on WhatsApp')}
+                </span>
+              </button>
 
-            <button 
-              onClick={handleViberClick}
-              className="viber-button"
-              aria-label="Viber"
-            >
-              <img 
-                src={viberIcon}
-                alt="Viber" 
-                className="viber-icon"
-              />
-              <span className="button-text">
-                {t('footer_viber', 'Chat on Viber')}
-              </span>
-            </button>
-
+              <button
+                onClick={handleViberClick}
+                className="viber-button"
+                aria-label="Viber"
+              >
+                <img
+                  src={viberIcon}
+                  alt="Viber"
+                  className="viber-icon-small"
+                />
+                <span className="button-text">
+                  {t('footer_viber', 'Chat on Viber')}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} {t('footer_copyright')}</p>
+        <p>
+          © {new Date().getFullYear()} {t('footer_copyright')}
+          {' · '}
+          <Link
+            to="/privacy"
+            style={{
+              color: 'rgba(255,255,255,0.65)',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.95)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
+          >
+            {t('footer_privacy_link')}
+          </Link>
+        </p>
       </div>
     </footer>
   );

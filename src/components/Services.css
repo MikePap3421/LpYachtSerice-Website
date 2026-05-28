@@ -2,34 +2,56 @@
    SERVICES PAGE STYLES
    ========================================================================== */
 
-/* --- Hero Section --- */
 .services-hero-section {
   text-align: center;
-  padding: 3rem 1rem 1.5rem;
+  padding: 4rem 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.services-subtitle {
-  color: #555;
-  max-width: 800px;
-  margin: 0.5rem auto 0 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+.services-main-title {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: #274688;
+  margin-bottom: 0 !important;
+  position: relative;
+  display: inline-block;
 }
 
-/* --- DESKTOP GRID LAYOUT (PC VERSION) --- */
+.services-main-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: #FCA311;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-subtitle {
+  color: #555;
+  max-width: 700px;
+  margin: 1rem auto 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+.services-section-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 @media (min-width: 900px) {
   .services-slider {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 24px !important;
     overflow-x: visible !important;
-    padding: 10px 1rem !important;
+    padding: 10px 1rem 20px !important;
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 2rem;
-    justify-content: center;
   }
 
   .services-slider .service-card-enhanced {
@@ -40,25 +62,25 @@
     position: relative !important;
     overflow: hidden !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 4px 16px rgba(39, 70, 136, 0.08) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(39, 70, 136, 0.07) !important;
   }
 
   .services-slider .service-card-enhanced:hover {
     transform: translateY(-8px) !important;
-    box-shadow: 0 20px 40px rgba(39, 70, 136, 0.15) !important;
+    box-shadow: 0 20px 40px rgba(39, 70, 136, 0.16) !important;
   }
 
   .services-slider .service-card-enhanced::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
     background-color: #274688;
-    transform: scaleX(0); 
-    transform-origin: center;
-    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
   }
 
   .services-slider .service-card-enhanced:hover::after {
@@ -66,9 +88,8 @@
   }
 }
 
-/* --- Service Card Internals (Compact & Centered) --- */
 .service-card-content {
-  padding: 1.5rem !important;
+  padding: 2rem !important;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -77,45 +98,57 @@
 }
 
 .service-icon-wrapper {
-  color: #274688;
   display: flex;
   justify-content: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.service-icon-wrapper svg {
-  font-size: 2.5rem !important;
+.service-icon-wrapper > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(39, 70, 136, 0.07);
+  color: #274688;
+  transition: background 0.3s ease;
 }
+
+.service-card-enhanced:hover .service-icon-wrapper > * {
+  background: rgba(252, 163, 17, 0.12);
+}
+
+.service-icon-wrapper svg { font-size: 2rem !important; }
 
 .service-title-text {
-  font-size: 1.25rem !important;
+  font-size: 1.2rem !important;
   font-weight: 700 !important;
   color: #274688;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.6rem !important;
 }
 
 .service-description-text {
   font-size: 0.9rem !important;
-  line-height: 1.4 !important;
+  line-height: 1.55 !important;
   color: #555;
   margin-bottom: 1rem !important;
   flex-grow: 1;
 }
 
-/* --- Features & Chips --- */
 .service-features-area {
-  padding-top: 0.75rem;
-  border-top: 1px solid #eee;
+  padding-top: 0.85rem;
+  border-top: 1px solid #eef0f4;
   width: 100%;
 }
 
 .includes-text {
-  font-size: 0.75rem !important;
+  font-size: 0.7rem !important;
   font-weight: 600 !important;
-  color: #999;
-  margin-bottom: 0.5rem !important;
+  color: #aaa;
+  margin-bottom: 0.6rem !important;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 
 .chip-group {
@@ -126,72 +159,88 @@
 }
 
 .service-chip {
-  background-color: #f0f4ff !important;
+  background-color: #eef2fc !important;
   color: #274688 !important;
-  border: 1px solid #e0e9ff !important;
-  height: 24px !important; 
-  font-size: 0.75rem !important; 
+  border: 1px solid #dde6f7 !important;
+  height: 26px !important;
+  font-size: 0.74rem !important;
+  border-radius: 6px !important;
 }
 
 .service-chip .MuiChip-label {
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
-/* --- Projects Teaser Section --- */
 .projects-teaser-section {
   text-align: center;
-  padding: 3rem 1rem;
-  margin-top: 2rem;
+  padding: 4rem 1rem;
+  background-color: #ffffff;
+  margin-top: 3rem;
 }
 
 .teaser-title {
   color: #274688;
   font-size: 2rem !important;
   font-weight: 700 !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0 !important;
+  position: relative;
+  display: inline-block;
+}
+
+.teaser-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #FCA311;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 .teaser-subtitle {
   color: #666;
   font-size: 1rem !important;
-  margin-bottom: 2rem !important;
+  margin: 1rem auto 2rem !important;
+  max-width: 500px;
 }
 
 .teaser-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto 2rem;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
 }
 
 .teaser-card {
-  border-radius: 8px !important;
+  border-radius: 10px !important;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  box-shadow: 0 4px 16px rgba(39, 70, 136, 0.1) !important;
   height: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.teaser-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(39, 70, 136, 0.18) !important;
 }
 
 .teaser-img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
-.teaser-card:hover .teaser-img {
-  transform: scale(1.05);
-}
+.teaser-card:hover .teaser-img { transform: scale(1.04); }
 
-/* --- Mobile Responsiveness --- */
 @media (max-width: 899px) {
   .services-slider {
     display: flex !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory;
     margin-top: 2rem;
-    padding: 0 7.5% 20px 7.5% !important; 
+    padding: 0 7.5% 20px 7.5% !important;
     gap: 24px !important;
   }
 
@@ -203,17 +252,18 @@
 
   .teaser-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .projects-teaser-section {
+    margin-top: 2rem;
+    padding: 3rem 1rem;
   }
 }
 
 @media (max-width: 600px) {
-  .services-hero-section {
-    padding: 2rem 1rem 0.75rem;
-  }
-
-  .services-main-title {
-    font-size: 1.45rem !important;
-  }
+  .services-hero-section { padding: 2.5rem 1rem 1rem; }
+  .services-main-title   { font-size: 1.45rem !important; }
 
   .services-subtitle {
     font-size: 0.84rem !important;
@@ -231,25 +281,19 @@
     max-width: 84% !important;
   }
 
-  .service-card-content {
-    padding: 1rem !important;
+  .service-card-content { padding: 1.25rem !important; }
+
+  .service-icon-wrapper > * {
+    width: 48px;
+    height: 48px;
   }
 
-  .service-icon-wrapper {
-    margin-bottom: 0.5rem;
-  }
-
-  .service-icon-wrapper svg {
-    font-size: 2rem !important;
-  }
-
-  .service-title-text {
-    font-size: 0.98rem !important;
-  }
+  .service-icon-wrapper svg { font-size: 1.6rem !important; }
+  .service-title-text        { font-size: 0.98rem !important; }
 
   .service-description-text {
     font-size: 0.78rem !important;
-    line-height: 1.35 !important;
+    line-height: 1.4 !important;
     margin-bottom: 0.75rem !important;
   }
 
@@ -259,22 +303,16 @@
   }
 
   .projects-teaser-section {
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
     margin-top: 1rem;
   }
 
-  .teaser-title {
-    font-size: 1.32rem !important;
-  }
-
-  .teaser-subtitle {
-    font-size: 0.82rem !important;
-    margin-bottom: 1.25rem !important;
-  }
+  .teaser-title    { font-size: 1.32rem !important; }
+  .teaser-subtitle { font-size: 0.82rem !important; margin-bottom: 1.25rem !important; }
 
   .teaser-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .service-card-enhanced,

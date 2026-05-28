@@ -7,11 +7,12 @@ import './Shared.css';
 import './Projects.css';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { useScrollReveal } from './useScrollReveal';
 
 function Projects() {
   const { t } = useTranslation();
-  
-  const galleryImages = Array.from({ length: 21 }, (_, i) => 
+
+  const galleryImages = Array.from({ length: 21 }, (_, i) =>
     `/gallery/g${i + 1}.jpg`
   );
 
@@ -20,7 +21,10 @@ function Projects() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const gallerySectionRef = useRef<HTMLDivElement>(null);
-  
+
+  const { ref: heroRef,    isVisible: heroVisible }    = useScrollReveal<HTMLElement>();
+  const { ref: galleryRef, isVisible: galleryVisible } = useScrollReveal<HTMLElement>();
+
   const displayedImages = showAll ? galleryImages : galleryImages.slice(0, 6);
 
   const handleProjectScroll = () => {
@@ -38,7 +42,7 @@ function Projects() {
 
   const handleShowLess = () => {
     setShowAll(false);
-    setActiveProjectIndex(0); 
+    setActiveProjectIndex(0);
     if (gallerySectionRef.current) {
       window.scrollTo({
         top: gallerySectionRef.current.offsetTop - 100,
@@ -67,10 +71,14 @@ function Projects() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.projects')}</title>
         <meta name="description" content={t('projects_hero_subtitle')} />
+        <link rel="canonical" href="https://lpyachtservice.com/projects" />
       </Helmet>
-      <Navbar/>
-      
-      <section className="projects-hero-section">
+      <Navbar />
+
+      <section
+        ref={heroRef}
+        className={`projects-hero-section reveal ${heroVisible ? 'is-visible' : ''}`}
+      >
         <Typography variant="h2" className="projects-main-title">
           {t('projects_hero_title')}
         </Typography>
@@ -79,18 +87,18 @@ function Projects() {
         </Typography>
       </section>
 
-      <section className="gallery-section-container" ref={gallerySectionRef}>
-        <div className="gallery-wrapper">
-          {/* CLEAN LOGIC: Toggles between 'services-slider' (horizontal) 
-              and 'projects-grid-vertical' (2-column vertical) 
-          */}
-          <div 
+      <section
+        ref={galleryRef}
+        className={`gallery-section-container reveal ${galleryVisible ? 'is-visible' : ''}`}
+      >
+        <div className="gallery-wrapper" ref={gallerySectionRef}>
+          <div
             ref={scrollContainerRef}
             onScroll={handleProjectScroll}
             className={showAll ? "projects-grid-vertical" : "services-slider"}
           >
             {displayedImages.map((image, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="gallery-card-item"
                 onClick={() => handleImageClick(index)}
@@ -100,6 +108,7 @@ function Projects() {
                   image={image}
                   alt={t('projects_image_alt', { number: index + 1 })}
                   className="gallery-image"
+                  loading="lazy"
                 />
               </Card>
             ))}
@@ -133,11 +142,15 @@ function Projects() {
           <IconButton onClick={goToPrev} className="modal-nav modal-prev"><NavigateBefore /></IconButton>
           <IconButton onClick={goToNext} className="modal-nav modal-next"><NavigateNext /></IconButton>
           {selectedImage !== null && (
-            <img src={galleryImages[selectedImage]} alt="Project" className="modal-image" />
+            <img
+              src={galleryImages[selectedImage]}
+              alt={t('projects_image_alt', { number: selectedImage + 1 })}
+              className="modal-image"
+            />
           )}
         </Box>
       </Modal>
-      
+
       <Footer />
     </div>
   );

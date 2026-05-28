@@ -9,46 +9,54 @@ import { useTranslation } from 'react-i18next';
 import BrandsCarousel from './BrandsCarousel';
 import { Helmet } from 'react-helmet-async';
 import { useState, useRef } from 'react';
+import { useScrollReveal } from './useScrollReveal';
 
 function Home() {
   const { t } = useTranslation();
-  
-  // Logic for TikTok-style dots
+
   const whyScrollRef = useRef<HTMLDivElement>(null);
   const [activeWhyIndex, setActiveWhyIndex] = useState(0);
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 
-  // Logic to calculate which card is in view for the dots
+  // One observer per section — fires once on first scroll into view
+  const { ref: aboutRef, isVisible: aboutVisible } = useScrollReveal<HTMLElement>();
+  const { ref: whyRef,   isVisible: whyVisible }   = useScrollReveal<HTMLElement>();
+  const { ref: ctaRef,   isVisible: ctaVisible }   = useScrollReveal<HTMLElement>();
+
   const handleWhyScroll = () => {
     if (whyScrollRef.current) {
       const container = whyScrollRef.current;
       const firstCard = container.querySelector('.why-card') as HTMLElement;
-      
       if (firstCard) {
         const cardWidth = firstCard.offsetWidth;
         const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
         const totalStep = cardWidth + gap;
-
-        const scrollPosition = container.scrollLeft;
-        const newIndex = Math.round(scrollPosition / totalStep);
-        
+        const newIndex = Math.round(container.scrollLeft / totalStep);
         setActiveWhyIndex(newIndex);
       }
     }
   };
-  
+
   return (
     <div>
       <Helmet>
         <title>LP Yacht Service | {t('nav.home')}</title>
         <meta name="description" content={t('home_hero_subtitle')} />
+        <link rel="canonical" href="https://lpyachtservice.com/" />
       </Helmet>
       <Navbar />
-      
-      {/* --- Video Section --- */}
+
+      {/* --- Video Section (above the fold — no reveal) --- */}
       <section className="home-container">
         <div className="video-background">
-          <video autoPlay loop muted playsInline poster="/gallery/g22PS.png">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster="/gallery/g22PS.png"
+          >
             <source src="/mainBackgroundVideo.mp4" type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
@@ -61,7 +69,7 @@ function Home() {
           <Typography variant="h4" className="hero-subtitle">
             {t('home_hero_subtitle')}
           </Typography>
-          
+
           <Box className="hero-buttons">
             <Button
               component={Link}
@@ -78,13 +86,16 @@ function Home() {
       </section>
 
       {/* --- About us Section --- */}
-      <section className="about-section">
+      <section
+        ref={aboutRef}
+        className={`about-section reveal ${aboutVisible ? 'is-visible' : ''}`}
+      >
         <Typography variant="h2" className="about-title">
           {t('home_about_title')}
         </Typography>
 
         <Box className="cards-section">
-          <Card className="info-card">
+          <Card className={`info-card reveal reveal-delay-1 ${aboutVisible ? 'is-visible' : ''}`}>
             <CardContent>
               <Typography variant="h5" className="info-card-title">
                 {t('home_about_our_story_title')}
@@ -93,7 +104,7 @@ function Home() {
                 <Typography variant="body1" className="info-card-description">
                   {t('home_about_our_story_description')}
                 </Typography>
-                
+
                 <Box className="info-card-list">
                   {[
                     t('home_about_bullet1'),
@@ -121,41 +132,45 @@ function Home() {
             </CardContent>
           </Card>
 
-          <Card className="info-card-img">
+          <Card className={`info-card-img reveal reveal-delay-2 ${aboutVisible ? 'is-visible' : ''}`}>
             <CardContent className="img-card-content">
-              <img 
-                src="/gallery/CarPhoto.jpg" 
+              <img
+                src="/gallery/CarPhoto.jpg"
                 alt={t('home_about_image_alt')}
+                loading="lazy"
               />
             </CardContent>
           </Card>
         </Box>
       </section>
-      
+
       <BrandsCarousel />
 
       {/* --- WHY CHOOSE US SECTION --- */}
-      <section className="why-choose-us-section">
+      <section
+        ref={whyRef}
+        className={`why-choose-us-section reveal ${whyVisible ? 'is-visible' : ''}`}
+      >
         <Typography variant="h2" className="why-title">
           {t('home_why_choose_us_title')}
         </Typography>
 
-        <div 
+        <div
           className="why-cards"
           ref={whyScrollRef}
           onScroll={handleWhyScroll}
         >
-          <div className="why-card">
+          <div className={`why-card reveal reveal-delay-1 ${whyVisible ? 'is-visible' : ''}`}>
             <h3>{t('home_why_card1_title')}</h3>
             <p>{t('home_why_card1_description')}</p>
           </div>
 
-          <div className="why-card">
+          <div className={`why-card reveal reveal-delay-2 ${whyVisible ? 'is-visible' : ''}`}>
             <h3>{t('home_why_card2_title')}</h3>
             <p>{t('home_why_card2_description')}</p>
           </div>
 
-          <div className="why-card">
+          <div className={`why-card reveal reveal-delay-3 ${whyVisible ? 'is-visible' : ''}`}>
             <h3>{t('home_why_card3_title')}</h3>
             <p>{t('home_why_card3_description')}</p>
           </div>
@@ -169,7 +184,10 @@ function Home() {
       </section>
 
       {/* --- CTA Section --- */}
-      <section className="home-cta">
+      <section
+        ref={ctaRef}
+        className={`home-cta reveal ${ctaVisible ? 'is-visible' : ''}`}
+      >
         <Box className="cta-container">
           <Typography variant="h3" className="cta-title">
             {t('home_cta_title')}
