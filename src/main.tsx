@@ -9,9 +9,9 @@ import './i18n';
 import { HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from './components/ErrorBoundary';
 import { inject } from '@vercel/analytics';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 inject();
-import { injectSpeedInsights } from '@vercel/speed-insights';
-injectSpeedInsights();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
           <CssBaseline />
           <BrowserRouter>
             <App />
+            <SpeedInsights />
           </BrowserRouter>
         </ThemeProvider>
       </HelmetProvider>
