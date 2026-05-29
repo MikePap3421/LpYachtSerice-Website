@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const STORAGE_KEY = 'lp_cookie_consent';
@@ -62,8 +63,9 @@ function CookieBanner() {
         }}
       >
         {t('cookie_banner_text')}{' '}
-        <a
-          href="/privacy"
+        <Link
+          to="/privacy"
+          onClick={handleAccept}
           style={{
             color: '#FCA311',
             fontWeight: 600,
@@ -71,7 +73,7 @@ function CookieBanner() {
           }}
         >
           {t('cookie_banner_link')}
-        </a>
+        </Link>
         .
       </Typography>
 

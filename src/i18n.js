@@ -29,11 +29,11 @@ const resources = {
       home_about_image_alt: "LP Yacht Service technician working on a boat engine",
 
       home_why_choose_us_title: "Why Choose Us",
-      home_why_card1_title: "⚙️ Specialization & Experience",
+      home_why_card1_title: "Specialization & Experience",
       home_why_card1_description: "With years of experience in boat engine maintenance and repair, we offer comprehensive solutions with technical accuracy and responsibility. Every project is executed with precision and attention to detail.",
-      home_why_card2_title: "⏱️ Immediate & Reliable Service",
+      home_why_card2_title: "Immediate & Reliable Service",
       home_why_card2_description: "We understand the importance of your time. We undertake every task with consistency and speed, ensuring immediate delivery of your boat in excellent condition.",
-      home_why_card3_title: "⚓ Quality & Trust",
+      home_why_card3_title: "Quality & Trust",
       home_why_card3_description: "We work with quality and transparency in mind. We use only the best materials and equipment. Our customers know they can trust us for every technical need of their boat.",
 
       home_cta_title: "Ready to Start Your Next Project?",
@@ -199,11 +199,11 @@ const resources = {
       home_about_image_alt: "Τεχνικός LP Yacht Service εργάζεται σε μηχανή σκάφους",
 
       home_why_choose_us_title: "Γιατί να μας Επιλέξετε",
-      home_why_card1_title: "⚙️ Εξειδίκευση & Εμπειρία",
+      home_why_card1_title: "Εξειδίκευση & Εμπειρία",
       home_why_card1_description: "Με πολυετή εμπειρία στη συντήρηση και επισκευή μηχανών σκαφών, προσφέρουμε ολοκληρωμένες λύσεις με τεχνική ακρίβεια και υπευθυνότητα. Κάθε έργο εκτελείται με ακρίβεια και προσοχή στη λεπτομέρεια.",
-      home_why_card2_title: "⏱️ Άμεση & Αξιόπιστη Εξυπηρέτηση",
+      home_why_card2_title: "Άμεση & Αξιόπιστη Εξυπηρέτηση",
       home_why_card2_description: "Αντιλαμβανόμαστε τη σημασία του χρόνου σας. Αναλαμβάνουμε κάθε εργασία με συνέπεια και ταχύτητα, διασφαλίζοντας την άμεση παράδοση του σκάφους σας σε άριστη κατάσταση.",
-      home_why_card3_title: "⚓ Ποιότητα & Εμπιστοσύνη",
+      home_why_card3_title: "Ποιότητα & Εμπιστοσύνη",
       home_why_card3_description: "Εργαζόμαστε με γνώμονα την ποιότητα και τη διαφάνεια. Χρησιμοποιούμε μόνο τα καλύτερα υλικά και εξοπλισμό. Οι πελάτες μας γνωρίζουν ότι μπορούν να μας εμπιστευτούν για κάθε τεχνική ανάγκη του σκάφους τους.",
 
       home_cta_title: "Έτοιμοι να Αρχίσετε το Επόμενο Έργο Σας;",
