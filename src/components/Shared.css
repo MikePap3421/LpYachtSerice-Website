@@ -27,7 +27,7 @@
 body {
   font-family: 'Noto Sans', 'Roboto', 'Helvetica', 'Arial', sans-serif;
   background-color: #f2f2f3;
-  color: #1B263B;
+  color: rgb(39, 70, 136);
   line-height: 1.6;
 }
 
@@ -174,9 +174,7 @@ img {
   transform: scale(1.08);
 }
 
-.brands-scroll-container:hover .brands-scroll-track {
-  animation-play-state: paused;
-}
+
 
 /* =========================================
    7. CONTACT SECTION
@@ -306,7 +304,8 @@ img {
 }
 
 .whatsapp-button,
-.viber-button {
+.viber-button,
+.instagram-button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -324,9 +323,11 @@ img {
 
 .whatsapp-button { color: #ffffff; }
 .viber-button    { color: #ffffff; }
+.instagram-button { color: #ffffff; }
 
 .whatsapp-button:hover,
-.viber-button:hover {
+.viber-button:hover,
+.instagram-button:hover {
   opacity: 0.72;
 }
 
@@ -565,6 +566,7 @@ img {
   }
 
   .footer-contact h4 {
+    font-size: 1.22rem;
     text-align: center;
   }
 
@@ -671,7 +673,8 @@ img {
   }
 
   .whatsapp-button,
-  .viber-button {
+  .viber-button,
+  .instagram-button {
     min-width: unset;
     height: auto;
     padding: 4px 0;
@@ -688,7 +691,8 @@ img {
   .primary-button:active,
   .secondary-button:active,
   .whatsapp-button:active,
-  .viber-button:active {
+  .viber-button:active,
+  .instagram-button:active {
     transform: translateY(-2px) scale(0.98) !important;
   }
 

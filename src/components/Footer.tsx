@@ -1,5 +1,5 @@
 import './Shared.css';
-import { Phone, Mail, WhatsApp } from '@mui/icons-material';
+import { Phone, Mail, WhatsApp, Instagram } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import viberIcon from '../assets/viber.png';
@@ -24,6 +24,10 @@ function Footer() {
     } else {
       window.open('https://viber.me/+306945663120', '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const handleInstagramClick = () => {
+    window.open('https://www.instagram.com/lp_yacht_service', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -79,6 +83,17 @@ function Footer() {
                 />
                 <span className="button-text">
                   {t('footer_viber', 'Chat on Viber')}
+                </span>
+              </button>
+
+              <button
+                onClick={handleInstagramClick}
+                className="instagram-button"
+                aria-label="Instagram"
+              >
+                <Instagram sx={{ fontSize: 20 }} />
+                <span className="button-text">
+                  {t('footer_instagram', 'Follow on Instagram')}
                 </span>
               </button>
             </div>
