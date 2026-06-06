@@ -71,7 +71,7 @@ function Projects() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.projects')}</title>
         <meta name="description" content={t('projects_hero_subtitle')} />
-        <link rel="canonical" href="https://lpyachtservice.com/projects" />
+        <link rel="canonical" href="https://lpyachtservice.gr/projects" />
       </Helmet>
       <Navbar />
 

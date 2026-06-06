@@ -42,7 +42,7 @@ function Home() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.home')}</title>
         <meta name="description" content={t('home_hero_subtitle')} />
-        <link rel="canonical" href="https://lpyachtservice.com/" />
+        <link rel="canonical" href="https://lpyachtservice.gr/" />
       </Helmet>
       <Navbar />
 

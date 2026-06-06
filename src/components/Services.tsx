@@ -47,7 +47,7 @@ function Services() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.services')}</title>
         <meta name="description" content={t('services_hero_subtitle')} />
-        <link rel="canonical" href="https://lpyachtservice.com/services" />
+        <link rel="canonical" href="https://lpyachtservice.gr/services" />
       </Helmet>
       <Navbar />
 

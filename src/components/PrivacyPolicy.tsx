@@ -24,7 +24,7 @@ function PrivacyPolicy() {
       <Helmet>
         <title>LP Yacht Service | {t('privacy_page_title')}</title>
         <meta name="description" content={t('privacy_meta_description')} />
-        <link rel="canonical" href="https://lpyachtservice.com/privacy" />
+        <link rel="canonical" href="https://lpyachtservice.gr/privacy" />
         {/* Privacy pages should not be indexed */}
         <meta name="robots" content="noindex, follow" />
       </Helmet>

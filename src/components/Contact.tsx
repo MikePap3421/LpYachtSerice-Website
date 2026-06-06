@@ -111,7 +111,7 @@ function Contact() {
       <Helmet>
         <title>LP Yacht Service | {t('nav.contact')}</title>
         <meta name="description" content={t('contact_hero_subtitle')} />
-        <link rel="canonical" href="https://lpyachtservice.com/contact" />
+        <link rel="canonical" href="https://lpyachtservice.gr/contact" />
       </Helmet>
       <Navbar />
 
