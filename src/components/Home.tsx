@@ -40,7 +40,7 @@ function Home() {
   return (
     <div>
       <Helmet>
-        <title>LP Yacht Service | {t('nav.home')}</title>
+        <title>{t('seo_home_title')}</title>
         <meta name="description" content={t('home_hero_subtitle')} />
         <link rel="canonical" href="https://lpyachtservice.gr/" />
       </Helmet>

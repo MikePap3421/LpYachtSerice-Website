@@ -50,7 +50,7 @@ const resources = {
       services_mechanical_feature1: "Engine servicing",
       services_mechanical_feature2: "Fault finding",
       services_mechanical_feature3: "Repairs",
-      services_mechanical_feature4: "Diagnosis",
+      services_mechanical_feature4: "Diagnostics",
 
       services_conversions_title: "Winch & Windlass Service",
       services_conversions_description: "Repair and maintenance of winches and windlasses, from routine servicing to full overhauls and parts replacement.",
@@ -132,6 +132,12 @@ const resources = {
       footer_privacy_link: "Privacy Policy",
       whatsapp_default_message: "Hello! I would like to get more information about your services.",
       viber_default_message: "Hello! I would like to get more information about your services.",
+
+      // SEO page titles — keyword rich, shown in browser tab and Google results
+      seo_home_title: "Boat Maintenance & Repair Preveza | LP Yacht Service",
+      seo_services_title: "Boat Services Preveza — Engines, Electrical, Winches | LP Yacht Service",
+      seo_projects_title: "Project Gallery — Boat Repairs Preveza | LP Yacht Service",
+      seo_contact_title: "Contact Boat Repair Preveza | LP Yacht Service",
 
       // Cookie Banner
       cookie_banner_text: "This website uses only essential cookies for the contact form. We also use Vercel Analytics and Speed Insights for anonymous traffic and performance data — no personal data, no tracking cookies. For more information see our",
@@ -302,6 +308,18 @@ const resources = {
       footer_privacy_link: "Πολιτική Απορρήτου",
       whatsapp_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
       viber_default_message: "Γεια σας! Θα ήθελα να λάβω περισσότερες πληροφορίες για τις υπηρεσίες σας.",
+
+      // SEO page titles — keyword rich, shown in browser tab and Google results
+      seo_home_title: "Boat Maintenance & Repair Preveza | LP Yacht Service",
+      seo_services_title: "Boat Services Preveza — Engines, Electrical, Winches | LP Yacht Service",
+      seo_projects_title: "Project Gallery — Boat Repairs Preveza | LP Yacht Service",
+      seo_contact_title: "Contact Boat Repair Preveza | LP Yacht Service",
+
+      // SEO page titles — keyword rich, shown in browser tab and Google results
+      seo_home_title: "Συντήρηση & Επισκευή Σκαφών Πρέβεζα | LP Yacht Service",
+      seo_services_title: "Υπηρεσίες Σκαφών Πρέβεζα — Μηχανές, Ηλεκτρολογικά, Βίντσι | LP Yacht Service",
+      seo_projects_title: "Εργασίες & Έργα Επισκευής Σκαφών | LP Yacht Service",
+      seo_contact_title: "Επικοινωνία — Συντήρηση Σκαφών Πρέβεζα | LP Yacht Service",
 
       // Cookie Banner
       cookie_banner_text: "Αυτός ο ιστότοπος χρησιμοποιεί μόνο απαραίτητα cookies για τη φόρμα επικοινωνίας. Χρησιμοποιούμε επίσης το Vercel Analytics και Speed Insights για ανώνυμα δεδομένα επισκεψιμότητας και απόδοσης — χωρίς προσωπικά δεδομένα, χωρίς cookies παρακολούθησης. Για περισσότερες πληροφορίες δείτε την",
