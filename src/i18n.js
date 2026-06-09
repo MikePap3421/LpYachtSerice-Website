@@ -362,15 +362,37 @@ const resources = {
   }
 };
 
+// Detect language from localStorage (user's previous choice)
+// or fall back to browser language, defaulting to Greek if neither matches
+const getDefaultLanguage = () => {
+  try {
+    const stored = localStorage.getItem('lp_lang');
+    if (stored === 'el' || stored === 'en') return stored;
+    const lang = navigator.language || '';
+    return lang.toLowerCase().startsWith('el') ? 'el' : 'en';
+  } catch {
+    return 'el';
+  }
+};
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'el',
+    lng: getDefaultLanguage(),
     fallbackLng: 'el',
     interpolation: {
       escapeValue: false,
     },
   });
+
+// Persist language choice to localStorage whenever user changes it
+i18n.on('languageChanged', (lng) => {
+  try {
+    localStorage.setItem('lp_lang', lng);
+  } catch {
+    // localStorage unavailable, silently ignore
+  }
+});
 
 export default i18n;
