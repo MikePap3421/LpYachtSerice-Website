@@ -371,7 +371,7 @@ const getDefaultLanguage = () => {
     const lang = navigator.language || '';
     return lang.toLowerCase().startsWith('el') ? 'el' : 'en';
   } catch {
-    return 'el';
+    return 'en';
   }
 };
 
@@ -380,7 +380,7 @@ i18n
   .init({
     resources,
     lng: getDefaultLanguage(),
-    fallbackLng: 'el',
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
