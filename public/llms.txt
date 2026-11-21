@@ -1,0 +1,29 @@
+# LP Yacht Service
+
+> Family-owned marine engineering and yacht maintenance business based in Preveza, Greece, specializing in marine engine replacement (Volvo Penta, Yanmar), mechanical repairs, winch & windlass service, electrical systems, hydraulics, and preventive boat care across the Ionian Sea.
+
+LP Yacht Service provides hands-on technical support for sailing yachts and motorboats in Preveza, Aktio boatyards, Lefkada, and the wider Ionian region. Services are available in both Greek and English.
+
+## Core Services
+
+- **Engine Replacement & Installation (Αντικατάσταση & Τοποθέτηση Κινητήρα)**: Full repowering management including engine removal, engine room preparation and cleaning, engine mount replacement and alignment, peripheral component inspection, propulsion checks, and new engine certification in collaboration with official Volvo and Yanmar dealers.
+- **Engine & Mechanical Work (Μηχανές & Μηχανικές Εργασίες)**: Routine servicing, fault diagnostics, and repairs for main and auxiliary marine engines.
+- **Winch & Windlass Service (Βίντσι & Εργάτης)**: Regular servicing, full rebuilds, and component replacement for deck winches and anchor windlasses.
+- **Electrical Systems (Ηλεκτρικά Συστήματα)**: Inspection, troubleshooting, repair, installation, and upgrades of marine electrical systems.
+- **Preventive Maintenance (Προληπτική Συντήρηση)**: Seasonal checks, scheduled servicing, spare parts, and inspections to prevent major breakdowns.
+- **Auxiliary & Hydraulic Systems (Βοηθητικά & Υδραυλικά Συστήματα)**: Servicing and support for marine generators, pumps, controls, and hydraulic systems.
+- **Technical Consulting (Τεχνική Συμβουλευτική)**: Technical assessments, repair planning, and upgrade guidance for boat owners and prospective buyers.
+
+## Pages
+
+- [Home](https://lpyachtservice.gr/): Overview of LP Yacht Service, company story, and supported marine brands.
+- [Services](https://lpyachtservice.gr/services): Full breakdown of all yacht maintenance, engine replacement, and repair services.
+- [Projects](https://lpyachtservice.gr/projects): Gallery of completed marine engineering, engine, and yacht service work.
+- [Contact](https://lpyachtservice.gr/contact): Direct contact details and inquiry options.
+
+## Contact & Location
+
+- **Location**: Preveza, Epirus, Greece (serving Preveza, Aktio, Lefkada, and the Ionian Sea)
+- **Phone**: +30 6945663120
+- **Email**: lpyachtservice@gmail.com
+- **Hours**: Monday–Friday 08:00–18:00, Saturday 09:00–14:00 (EET/EEST)

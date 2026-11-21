@@ -42,57 +42,17 @@
   padding: 0 1rem;
 }
 
-@media (min-width: 900px) {
-  .services-slider {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 24px !important;
-    overflow-x: visible !important;
-    padding: 10px 1rem 20px !important;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 2rem;
-  }
-
-  .services-slider .service-card-enhanced {
-    height: 100% !important;
-    width: 100% !important;
-    max-width: none !important;
-    flex: none !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    box-shadow: 0 4px 16px rgba(39, 70, 136, 0.08) !important;
-    border-radius: 12px !important;
-    border: 1px solid rgba(39, 70, 136, 0.07) !important;
-  }
-
-  .services-slider .service-card-enhanced:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 20px 40px rgba(39, 70, 136, 0.16) !important;
-  }
-
-  .services-slider .service-card-enhanced::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background-color: #274688;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
-  }
-
-  .services-slider .service-card-enhanced:hover::after {
-    transform: scaleX(1);
-  }
-}
+/* ==========================================================================
+   STANDARD SERVICE CARDS
+   ========================================================================== */
 
 .service-card-content {
   padding: 2rem !important;
   display: flex;
   flex-direction: column;
+  flex: 1;
   height: 100%;
+  box-sizing: border-box;
   text-align: center;
   justify-content: space-between;
 }
@@ -119,7 +79,9 @@
   background: rgba(252, 163, 17, 0.12);
 }
 
-.service-icon-wrapper svg { font-size: 2rem !important; }
+.service-icon-wrapper svg {
+  font-size: 2rem !important;
+}
 
 .service-title-text {
   font-size: 1.2rem !important;
@@ -171,6 +133,73 @@
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
+
+/* ==========================================================================
+   FEATURED ENGINE CARD (Place INSIDE .services-slider with .service-card-enhanced)
+   ========================================================================== */
+
+.featured-engine-content {
+  padding: 2.2rem !important;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.featured-engine-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+}
+
+.featured-engine-icon {
+  flex: 0 0 64px;
+  margin: 0;
+}
+
+.featured-engine-icon > * {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+.featured-engine-copy {
+  text-align: left;
+}
+
+.featured-engine-copy .service-title-text {
+  font-size: 1.5rem !important;
+  margin: 0 0 0.5rem !important;
+}
+
+.featured-engine-copy .service-description-text {
+  font-size: 0.96rem !important;
+  margin: 0 !important;
+}
+
+.featured-engine-features {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+  border-left: 1px solid #eef0f4;
+}
+
+.featured-engine-features .includes-text {
+  text-align: left;
+}
+
+.featured-engine-features .chip-group {
+  justify-content: flex-start;
+}
+
+/* ==========================================================================
+   PROJECTS TEASER SECTION
+   ========================================================================== */
 
 .projects-teaser-section {
   text-align: center;
@@ -227,12 +256,77 @@
 }
 
 .teaser-img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.teaser-card:hover .teaser-img { transform: scale(1.04); }
+.teaser-card:hover .teaser-img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   DESKTOP GRID (>= 900px)
+   ========================================================================== */
+
+@media (min-width: 900px) {
+  .services-slider {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    overflow-x: visible !important;
+    padding: 10px 1rem 20px !important;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+  }
+
+  .services-slider .service-card-enhanced {
+    display: flex !important;
+    flex-direction: column;
+    height: 100% !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(39, 70, 136, 0.08) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(39, 70, 136, 0.07) !important;
+  }
+
+  .services-slider .service-card-enhanced.featured-engine-card {
+    grid-column: 1 / -1;
+    border: 1px solid #d8e3f4 !important;
+  }
+
+  .services-slider .service-card-enhanced:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(39, 70, 136, 0.16) !important;
+  }
+
+  .services-slider .service-card-enhanced::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #274688;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .services-slider .service-card-enhanced:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ==========================================================================
+   TABLET & MOBILE SLIDER (<= 899px)
+   ========================================================================== */
 
 @media (max-width: 899px) {
   .services-slider {
@@ -245,9 +339,75 @@
   }
 
   .services-slider .service-card-enhanced {
+    display: flex !important;
+    flex-direction: column;
     flex: 0 0 85% !important;
     max-width: 85% !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
     scroll-snap-align: center;
+  }
+
+  .service-card-enhanced:hover .service-icon-wrapper > * {
+    background: rgba(39, 70, 136, 0.07);
+  }
+
+  .featured-engine-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    padding: 2rem !important;
+    text-align: center;
+  }
+
+  .featured-engine-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  .featured-engine-icon {
+    flex: none;
+    margin-bottom: 1rem;
+  }
+
+  .featured-engine-icon > * {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .featured-engine-copy {
+    text-align: center;
+  }
+
+  .featured-engine-copy .service-title-text {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .featured-engine-copy .service-description-text {
+    font-size: 0.9rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .featured-engine-features {
+    align-self: auto;
+    width: 100%;
+    padding: 0.85rem 0 0;
+    border-left: 0;
+    border-top: 1px solid #eef0f4;
+  }
+
+  .featured-engine-features .includes-text {
+    text-align: center;
+  }
+
+  .featured-engine-features .chip-group {
+    justify-content: center;
   }
 
   .teaser-grid {
@@ -261,9 +421,18 @@
   }
 }
 
+/* ==========================================================================
+   SMALL MOBILE (<= 600px)
+   ========================================================================== */
+
 @media (max-width: 600px) {
-  .services-hero-section { padding: 2.5rem 1rem 1rem; }
-  .services-main-title   { font-size: 1.45rem !important; }
+  .services-hero-section {
+    padding: 2.5rem 1rem 1rem;
+  }
+
+  .services-main-title {
+    font-size: 1.45rem !important;
+  }
 
   .services-subtitle {
     font-size: 0.84rem !important;
@@ -281,17 +450,28 @@
     max-width: 84% !important;
   }
 
-  .service-card-content { padding: 1.25rem !important; }
+  .service-card-content,
+  .featured-engine-content {
+    padding: 1.25rem !important;
+  }
 
-  .service-icon-wrapper > * {
+  .service-icon-wrapper > *,
+  .featured-engine-icon > * {
     width: 48px;
     height: 48px;
   }
 
-  .service-icon-wrapper svg { font-size: 1.6rem !important; }
-  .service-title-text        { font-size: 0.98rem !important; }
+  .service-icon-wrapper svg {
+    font-size: 1.6rem !important;
+  }
 
-  .service-description-text {
+  .service-title-text,
+  .featured-engine-copy .service-title-text {
+    font-size: 0.98rem !important;
+  }
+
+  .service-description-text,
+  .featured-engine-copy .service-description-text {
     font-size: 0.78rem !important;
     line-height: 1.4 !important;
     margin-bottom: 0.75rem !important;
@@ -307,8 +487,14 @@
     margin-top: 1rem;
   }
 
-  .teaser-title    { font-size: 1.32rem !important; }
-  .teaser-subtitle { font-size: 0.82rem !important; margin-bottom: 1.25rem !important; }
+  .teaser-title {
+    font-size: 1.32rem !important;
+  }
+
+  .teaser-subtitle {
+    font-size: 0.82rem !important;
+    margin-bottom: 1.25rem !important;
+  }
 
   .teaser-grid {
     grid-template-columns: 1fr;

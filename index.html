@@ -1,41 +1,66 @@
 <!doctype html>
-<html lang="en">
+<html lang="el">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Non-blocking Google Fonts (removed unused 300 weight) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- Preload hero poster image for faster LCP -->
+    <link rel="preload" as="image" href="/gallery/g22PS.png" fetchpriority="high" />
 
     <title>Συντήρηση & Επισκευή Σκαφών Πρέβεζα | LP Yacht Service</title>
 
     <link rel="icon" type="image/png" sizes="512x512" href="/mainlogo.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/mainlogo.png" />
-    <link rel="canonical" href="https://lpyachtservice.gr/" />
 
-    <meta name="title" content="Συντήρηση & Επισκευή Σκαφών Πρέβεζα | LP Yacht Service">
-    <meta name="description" content="Εξειδικευμένες υπηρεσίες συντήρησης και επισκευής σκαφών στην Πρέβεζα. Μηχανολογικά, ηλεκτρολογικά, refit και τεχνική συμβουλευτική. Expert yacht maintenance and boat repair in Preveza, Greece.">
-    <meta name="keywords" content="yacht service preveza, boat repair greece, marine mechanic preveza, volvo penta service preveza, yanmar service greece, συντήρηση σκαφών πρέβεζα, επισκευή σκαφών, μηχανικός σκαφών πρέβεζα">
-    <meta name="author" content="LP Yacht Service">
+    <meta name="description" content="Εξειδικευμένες υπηρεσίες συντήρησης και επισκευής σκαφών στην Πρέβεζα. Αντικατάσταση κινητήρα (Volvo, Yanmar), μηχανολογικά, ηλεκτρολογικά, βίντσι & εργάτης, υδραυλικά. Expert yacht maintenance and boat repair in Preveza, Greece." />
+    <meta name="keywords" content="yacht service preveza, boat repair greece, marine mechanic preveza, marine engine replacement preveza, volvo penta service preveza, yanmar service greece, aktio boatyard mechanic, συντήρηση σκαφών πρέβεζα, επισκευή σκαφών, αντικατάσταση κινητήρα σκάφους, μηχανικός σκαφών πρέβεζα" />
+    <meta name="author" content="LP Yacht Service" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LP Yacht Service" />
+    <meta property="og:locale" content="el_GR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://lpyachtservice.gr/" />
-    <meta property="og:title" content="LP Yacht Service | Expert Boat Care in Preveza" />
-    <meta property="og:description" content="Specialized mechanics, electrical systems, refits and boat care. Trusted family business in Preveza, Greece." />
+    <meta property="og:title" content="LP Yacht Service | Expert Boat Care & Engine Replacement in Preveza" />
+    <meta property="og:description" content="Specialized marine mechanics, Volvo & Yanmar engine replacement, electrical systems, winch & windlass service, and boat care in Preveza, Greece." />
     <meta property="og:image" content="https://lpyachtservice.gr/social-share.png" />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LP Yacht Service | Expert Boat Care in Preveza" />
+    <meta name="twitter:description" content="Specialized marine mechanics, engine replacement, electrical systems and yacht maintenance in Preveza, Greece." />
+    <meta name="twitter:image" content="https://lpyachtservice.gr/social-share.png" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "LP Yacht Service",
-        "description": "Family business specializing in yacht and boat maintenance, engine servicing, electrical systems, refits and technical consulting in Preveza, Greece.",
+        "description": "Family business specializing in yacht and boat maintenance, marine engine replacement and installation (Volvo, Yanmar), winch & windlass repair, electrical systems, hydraulics, and technical consulting in Preveza, Greece.",
         "image": "https://lpyachtservice.gr/mainlogo.png",
+        "logo": "https://lpyachtservice.gr/mainlogo.png",
         "telephone": "+30 6945663120",
         "email": "lpyachtservice@gmail.com",
         "address": {
@@ -49,12 +74,27 @@
           "latitude": 38.9575,
           "longitude": 20.7511
         },
+        "areaServed": [
+          { "@type": "City", "name": "Preveza" },
+          { "@type": "Place", "name": "Aktio" },
+          { "@type": "Place", "name": "Lefkada" },
+          { "@type": "Place", "name": "Ionian Sea" }
+        ],
+        "knowsAbout": [
+          "Marine Engine Replacement",
+          "Volvo Penta Marine Engines",
+          "Yanmar Marine Engines",
+          "Marine Electrical Systems",
+          "Winch & Windlass Repair",
+          "Yacht Hydraulic Systems",
+          "Preventive Yacht Maintenance"
+        ],
         "url": "https://lpyachtservice.gr",
         "priceRange": "$$",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "08:00",
             "closes": "18:00"
           },
@@ -69,12 +109,63 @@
           "@type": "OfferCatalog",
           "name": "Marine Services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engine & Mechanical Work" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electrical Systems" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Refits & Upgrades" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Preventive Maintenance" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auxiliary & Hydraulic Systems" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical Consulting" } }
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Engine Replacement & Installation",
+                "alternateName": "Αντικατάσταση & Τοποθέτηση Κινητήρα",
+                "description": "Complete marine engine replacement management, from removal and engine room preparation through alignment, propulsion check, and certification with official Volvo and Yanmar dealers."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Engine & Mechanical Work",
+                "alternateName": "Μηχανές & Μηχανικές Εργασίες"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Winch & Windlass Service",
+                "alternateName": "Βίντσι & Εργάτης"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Electrical Systems",
+                "alternateName": "Ηλεκτρικά Συστήματα"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Preventive Maintenance",
+                "alternateName": "Προληπτική Συντήρηση"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Auxiliary & Hydraulic Systems",
+                "alternateName": "Βοηθητικά & Υδραυλικά Συστήματα"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Technical Consulting",
+                "alternateName": "Τεχνική Συμβουλευτική"
+              }
+            }
           ]
         }
       }

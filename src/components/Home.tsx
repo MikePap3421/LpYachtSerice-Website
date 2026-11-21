@@ -12,7 +12,8 @@ import { useState, useRef } from 'react';
 import { useScrollReveal } from './useScrollReveal';
 
 function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isGreek = i18n.language?.startsWith('el');
 
   const whyScrollRef = useRef<HTMLDivElement>(null);
   const [activeWhyIndex, setActiveWhyIndex] = useState(0);
@@ -39,7 +40,7 @@ function Home() {
 
   return (
     <div>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: isGreek ? 'el' : 'en' }}>
         <title>{t('seo_home_title')}</title>
         <meta name="description" content={t('home_hero_subtitle')} />
         <link rel="canonical" href="https://lpyachtservice.gr/" />
@@ -54,8 +55,8 @@ function Home() {
             loop
             muted
             playsInline
-            preload="metadata"
-            poster="/gallery/g22PS.png"
+            preload="auto"
+            poster="/gallery/g22PS.webp"
           >
             <source src="/mainBackgroundVideo.mp4" type="video/mp4" />
           </video>
@@ -63,10 +64,10 @@ function Home() {
         </div>
 
         <div className="hero-text">
-          <Typography variant="h1" className="hero-title">
+          <Typography component="h1" variant="h1" className="hero-title">
             {t('home_hero_title')} <span className="hero-company">{t('home_hero_company')}</span>
           </Typography>
-          <Typography variant="h4" className="hero-subtitle">
+          <Typography component="p" variant="h4" className="hero-subtitle">
             {t('home_hero_subtitle')}
           </Typography>
 
@@ -90,14 +91,14 @@ function Home() {
         ref={aboutRef}
         className={`about-section reveal ${aboutVisible ? 'is-visible' : ''}`}
       >
-        <Typography variant="h2" className="about-title">
+        <Typography component="h2" variant="h2" className="about-title">
           {t('home_about_title')}
         </Typography>
 
         <Box className="cards-section">
           <Card className={`info-card reveal reveal-delay-1 ${aboutVisible ? 'is-visible' : ''}`}>
             <CardContent>
-              <Typography variant="h5" className="info-card-title">
+              <Typography component="h3" variant="h5" className="info-card-title">
                 {t('home_about_our_story_title')}
               </Typography>
               <div className={`about-mobile-collapsible ${isAboutExpanded ? 'is-expanded' : ''}`}>
@@ -112,7 +113,7 @@ function Home() {
                     t('home_about_bullet3')
                   ].map((item, index) => (
                     <Box key={index} className="list-item">
-                      <CheckCircle className="check-icon" />
+                      <CheckCircle className="check-icon" aria-hidden="true" />
                       <Typography variant="body2" className="list-text">
                         {item}
                       </Typography>
@@ -138,6 +139,7 @@ function Home() {
                 src="/gallery/CarPhoto.jpg"
                 alt={t('home_about_image_alt')}
                 loading="lazy"
+                decoding="async"
               />
             </CardContent>
           </Card>
@@ -151,7 +153,7 @@ function Home() {
         ref={whyRef}
         className={`why-choose-us-section reveal ${whyVisible ? 'is-visible' : ''}`}
       >
-        <Typography variant="h2" className="why-title">
+        <Typography component="h2" variant="h2" className="why-title">
           {t('home_why_choose_us_title')}
         </Typography>
 
@@ -176,7 +178,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="dot-container">
+        <div className="dot-container" aria-hidden="true">
           {[0, 1, 2].map((i) => (
             <div key={i} className={`dot ${activeWhyIndex === i ? 'active' : ''}`} />
           ))}
@@ -189,10 +191,10 @@ function Home() {
         className={`home-cta reveal ${ctaVisible ? 'is-visible' : ''}`}
       >
         <Box className="cta-container">
-          <Typography variant="h3" className="cta-title">
+          <Typography component="h2" variant="h3" className="cta-title">
             {t('home_cta_title')}
           </Typography>
-          <Typography variant="h6" className="cta-subtitle">
+          <Typography component="p" variant="h6" className="cta-subtitle">
             {t('home_cta_subtitle')}
           </Typography>
           <Button
