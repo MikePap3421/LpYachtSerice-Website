@@ -20,7 +20,7 @@ const resources = {
 
       home_about_title: "About Us",
       home_about_our_story_title: "Our Story",
-      home_about_our_story_description: "LP Yacht Service is a family business with deep roots in the shipbuilding industry. With over 15 years of experience, we have developed a passion for perfect execution of every project and absolute customer satisfaction. We specialize in comprehensive boat maintenance and repair solutions, combining traditional craftsmanship with modern technologies.",
+      home_about_our_story_description: "LP Yacht Service is a family business with deep roots in the shipbuilding industry. With over 25 years of experience, we have developed a passion for perfect execution of every project and absolute customer satisfaction. We specialize in comprehensive boat maintenance and repair solutions, combining traditional craftsmanship with modern technologies.",
       home_about_bullet1: "Specialized technical staff",
       home_about_bullet2: "Quality materials and services",
       home_about_bullet3: "Fast and reliable service",
@@ -203,7 +203,7 @@ const resources = {
 
       home_about_title: "Σχετικά με Εμάς",
       home_about_our_story_title: "Η Ιστορία μας",
-      home_about_our_story_description: "Η LP Yacht Service είναι μια οικογενειακή επιχείρηση με βαθιές ρίζες στη ναυπηγική βιομηχανία. Με πάνω από 15 χρόνια εμπειρίας, έχουμε αναπτύξει ένα πάθος για την τέλεια εκτέλεση κάθε έργου και την απόλυτη ικανοποίηση των πελατών μας. Εξειδικευόμαστε σε ολοκληρωμένες λύσεις συντήρησης και επισκευής σκαφών, συνδυάζοντας παραδοσιακή τεχνογνωσία με σύγχρονες τεχνολογίες.",
+      home_about_our_story_description: "Η LP Yacht Service είναι μια οικογενειακή επιχείρηση με βαθιές ρίζες στη ναυπηγική βιομηχανία. Με πάνω από 25 χρόνια εμπειρίας, έχουμε αναπτύξει ένα πάθος για την τέλεια εκτέλεση κάθε έργου και την απόλυτη ικανοποίηση των πελατών μας. Εξειδικευόμαστε σε ολοκληρωμένες λύσεις συντήρησης και επισκευής σκαφών, συνδυάζοντας παραδοσιακή τεχνογνωσία με σύγχρονες τεχνολογίες.",
       home_about_bullet1: "Εξειδικευμένο τεχνικό προσωπικό",
       home_about_bullet2: "Ποιότητα υλικών και υπηρεσιών",
       home_about_bullet3: "Γρήγορη και αξιόπιστη εξυπηρέτηση",

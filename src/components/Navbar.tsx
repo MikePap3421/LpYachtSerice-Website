@@ -163,6 +163,7 @@ function Navbar() {
                     color: isActive(item.path) ? "primary.main" : "inherit",
                     textTransform: "none",
                     position: 'relative',
+                    transition: "background-color 0.3s ease, color 0.3s ease, box-shadow 0.4s ease",
                     "&:after": isActive(item.path) ? {
                       content: '""',
                       position: 'absolute',
@@ -174,8 +175,9 @@ function Navbar() {
                       borderRadius: '2px'
                     } : {},
                     "&:hover": {
-                      color: "primary.main",
-                      backgroundColor: "rgba(83, 122, 194, 0.19)"
+                      color: "#1B3266",
+                      backgroundColor: "rgba(39, 70, 136, 0.22)",
+                      boxShadow: "inset 0 0 0 1px rgba(154, 162, 180, 0.25)",
                     },
                   }}
                 >
@@ -191,9 +193,11 @@ function Navbar() {
               onClick={handleLanguageClick}
               sx={{
                 color: "#1B263B",
+                transition: "background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease",
                 "&:hover": {
-                  backgroundColor: "rgba(83, 122, 194, 0.19)",
-                  color: "#274688"
+                  backgroundColor: "rgba(39, 70, 136, 0.22)",
+                  boxShadow: "inset 0 0 0 1px rgba(156, 166, 187, 0.25)",
+                  color: "#1B3266",
                 }
               }}
             >

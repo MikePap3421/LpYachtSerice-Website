@@ -100,14 +100,14 @@
 
 .service-features-area {
   padding-top: 0.85rem;
-  border-top: 1px solid #eef0f4;
+  border-top: 1px solid #d4dbe8;
   width: 100%;
 }
 
 .includes-text {
   font-size: 0.7rem !important;
   font-weight: 600 !important;
-  color: #aaa;
+  color: #6c778a;
   margin-bottom: 0.6rem !important;
   text-transform: uppercase;
   letter-spacing: 1.2px;
@@ -121,11 +121,12 @@
 }
 
 .service-chip {
-  background-color: #eef2fc !important;
+  background-color: #dde7fa !important;
   color: #274688 !important;
-  border: 1px solid #dde6f7 !important;
+  border: 1px solid #b4c7ec !important;
   height: 26px !important;
   font-size: 0.74rem !important;
+  font-weight: 600 !important;
   border-radius: 6px !important;
 }
 
@@ -186,7 +187,7 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 2rem;
-  border-left: 1px solid #eef0f4;
+  border-left: 1px solid #d4dbe8;
 }
 
 .featured-engine-features .includes-text {
@@ -399,7 +400,7 @@
     width: 100%;
     padding: 0.85rem 0 0;
     border-left: 0;
-    border-top: 1px solid #eef0f4;
+    border-top: 1px solid #d4dbe8;
   }
 
   .featured-engine-features .includes-text {

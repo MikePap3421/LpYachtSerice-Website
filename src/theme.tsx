@@ -9,7 +9,7 @@ const theme = createTheme({
       main: "#FCA311", // Golden yellow
     },
     background: {
-      default: "#f2f2f3ff", // Page background
+      default: "#F1EFEA", // Page background
       paper: "#F8F9FA",   // For cards/containers
     },
     text: {
@@ -27,7 +27,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#f3f2f2ff",
+          backgroundColor: "#e2e0d8",
           boxShadow: "none",
         },
       },
