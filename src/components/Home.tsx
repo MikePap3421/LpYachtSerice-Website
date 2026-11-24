@@ -44,6 +44,17 @@ function Home() {
         <title>{t('seo_home_title')}</title>
         <meta name="description" content={t('home_hero_subtitle')} />
         <link rel="canonical" href="https://lpyachtservice.gr/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lpyachtservice.gr/" />
+        <meta property="og:title" content={t('seo_home_title')} />
+        <meta property="og:description" content={t('home_hero_subtitle')} />
+        <meta property="og:image" content="https://lpyachtservice.gr/social-share.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('seo_home_title')} />
+        <meta name="twitter:description" content={t('home_hero_subtitle')} />
+        <meta name="twitter:image" content="https://lpyachtservice.gr/social-share.png" />
       </Helmet>
       <Navbar />
 
